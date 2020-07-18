@@ -1,12 +1,15 @@
-import React from 'react';
-import Button from 'uielements/button/button.component';
-import logo from './logo.png';
-import 'assets/css/main.css';
-import './app.scss';
+import React, { Suspense } from 'react';
+import { hot } from 'react-hot-loader/root'
+import Header from 'commons/header/header.component';
+const Home = React.lazy(() => import('./components/home/home.component'));
 
-export default function App() {
+
+function App() {
   return (
-    <div>
-    </div>
-  );
+    <Suspense fallback={<div>Loading...</div>}>
+      <Home />
+    </Suspense>
+  )
 }
+
+export default hot(App);
