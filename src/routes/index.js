@@ -24,46 +24,47 @@ const ComponentDiv = styled.div`
   width: calc(100vw - 260px);
   height: 100vh;
   background-color: ${colors.containerBackground}
-`
+`;
 
-const DefaultLayout = ({component: Component, common,  ...rest}) => {
-    return (
-      <Route {...rest} render={matchProps => (
-        <RouterDiv>
-            {
+const DefaultLayout = ({ component: Component, common, ...rest }) => (
+  <Route
+    {...rest}
+    render={(matchProps) => (
+      <RouterDiv>
+        {
               common.header && (
-                <Header 
+                <Header
                   changeHeaderColorOnScroll={false}
                   headerColor={colors.primaryColor}
-                  headerColor='transparent'
+                  headerColor="transparent"
                   headerText={common.headerText}
-                  showHeaderElements 
+                  showHeaderElements
                   isLoggedIn
                 />
               )
             }
-            {
+        {
               common.sidebar && (
                 <Sidebar />
               )
             }
-            <ComponentDiv>
-              <Component {...matchProps} />   
-            </ComponentDiv>
-        </RouterDiv>
-         
-      )} />
-    )
-};
+        <ComponentDiv>
+          <Component {...matchProps} />
+        </ComponentDiv>
+      </RouterDiv>
+
+    )}
+  />
+);
 
 function RoutesManager() {
-    return (
-        <Router>
-            <Switch>
-            <DefaultLayout path="/" common={{ header: false, sidebar: true,  }} component={App} />
-            </Switch>
-        </Router>
-    )
+  return (
+    <Router>
+      <Switch>
+        <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />
+      </Switch>
+    </Router>
+  );
 }
 
 export default RoutesManager;
