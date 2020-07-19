@@ -105,7 +105,7 @@ const styles = {
       box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(65, 126, 235, .4);
       color: #ffffff;
     }
-  `
+  `,
 };
 
 
