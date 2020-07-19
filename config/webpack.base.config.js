@@ -45,7 +45,7 @@ module.exports = function({ plugins }) {
             new HtmlWebpackPlugin({
                 template: paths.template,
                 hash: true,
-                title: 'Boilerplate',
+                title: 'Social MVP',
             }),
             new MiniCssExtractPlugin({
                 filename: '[name].[hash].css',

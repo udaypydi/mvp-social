@@ -7,7 +7,7 @@ import './app.scss';
 export default function App() {
   return (
     <div>
-      <p>Hello</p>
+      <p>Welcome to social mvp. </p>
     </div>
   );
 }
