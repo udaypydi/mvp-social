@@ -23,6 +23,9 @@ const ComponentDiv = styled.div`
   margin-left: 260px;
   width: calc(100vw - 260px);
   height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   background-color: ${colors.containerBackground}
 `;
 
