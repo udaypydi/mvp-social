@@ -7,6 +7,7 @@ const paths = {
     template: path.resolve(__dirname, './template.html'),
     uielements: path.resolve(__dirname, '../src/uielements'),
     src: path.resolve(__dirname, '../src'),
+    components: path.resolve(__dirname, '../src/components'),
 };
 
 

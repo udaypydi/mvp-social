@@ -58,6 +58,7 @@ module.exports = function({ plugins }) {
                 uielements: paths.uielements,
                 assets: paths.assets,
                 src: paths.src,
+                components: paths.components,
             }
         },
     });

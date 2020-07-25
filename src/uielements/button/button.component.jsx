@@ -31,10 +31,16 @@ Button.propTypes = {
    */
 
   primary: PropTypes.bool,
+
+  /**
+   * @className: add class to customize button
+   */
+  className: PropTypes.string,
 };
 
 Button.defaultProps = {
   primary: true,
+  className: '',
 };
 
 
