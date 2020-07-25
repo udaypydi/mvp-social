@@ -52,7 +52,7 @@ function Dashboard(props) {
                 />
             </Container>
             <H3 
-                weight="500"
+                weight="400"
                 margin="10px 0px 10px 0px"
             >Create your social content with ease.</H3>
             <CustomButton buttonText="Get Started!" />
