@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+import { withRouter } from 'react-router-dom';
 import theme from 'src/theme';
 import { H3 } from 'src/commons/text';
 import Button from 'src/uielements/button/button.component';
@@ -55,9 +56,14 @@ function Dashboard(props) {
                 weight="400"
                 margin="10px 0px 10px 0px"
             >Create your social content with ease.</H3>
-            <CustomButton buttonText="Get Started!" />
+            <CustomButton 
+                onClick={() => {
+                    props.history.push('/create-post');
+                }}
+                buttonText="Get Started!" 
+            />
         </Container>
     );
 }
 
-export default Dashboard;
+export default withRouter(Dashboard);

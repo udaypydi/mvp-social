@@ -4,6 +4,7 @@ import styled from '@emotion/styled';
 import theme from 'src/theme';
 import Header from 'src/commons/header/header.component';
 import Sidebar from 'src/commons/sidebar';
+import CreatePost from 'src/components/createpost';
 import App from 'src/app';
 
 const { colors } = theme;
@@ -64,6 +65,7 @@ function RoutesManager() {
   return (
     <Router>
       <Switch>
+        <DefaultLayout path="/create-post" common={{ header: false, sidebar: true }} component={CreatePost} />  
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />
       </Switch>
     </Router>
