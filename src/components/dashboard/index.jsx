@@ -17,8 +17,15 @@ const Container = styled.div`
 `;
 
 const CustomButton = styled(Button)`
-    background: ${colors.primaryColor};
+    background: ${colors.primaryColor} !important;
     color: #ffffff;
+    &:hover {
+        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(65,126,235,.4);
+    }
+
+    &:focus {
+        outline: none;
+    }
 `;
 
 function Dashboard(props) {
@@ -44,8 +51,11 @@ function Dashboard(props) {
                     style={{ margin: 10 }} 
                 />
             </Container>
-            <H3>Create your social content with ease.</H3>
-            <CustomButton buttonText="Getting Started!" />
+            <H3 
+                weight="500"
+                margin="10px 0px 10px 0px"
+            >Create your social content with ease.</H3>
+            <CustomButton buttonText="Get Started!" />
         </Container>
     );
 }
