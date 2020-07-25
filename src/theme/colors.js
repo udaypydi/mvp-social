@@ -6,4 +6,5 @@ export default {
   infoColor: '#2157a7',
   defaultColor: '#F8F7EF',
   containerBackground: '#EEEEEE',
+  basicCard: '#dfe0e5',
 };
