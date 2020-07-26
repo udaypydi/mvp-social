@@ -46,7 +46,7 @@ export const H5 = styled.h5`
 export const H6 = styled.h6`
     font-size: .75rem;
     font-family: ${fonts.primaryFont};
-    font-weight: 300;
+    font-weight: ${props => props.weight ||300};
     color: ${(props) => props.color};
     margin: ${props => props.margin || 0};
 `;
@@ -55,6 +55,7 @@ export const Paragraph = styled.p`
     font-size: ${(props) => props.fontSize};
     font-family: ${fonts.primaryFont};
     color: ${(props) => props.color};
+    font-weight: ${props => props.weight || 300};
 `;
 
 export const Quote = styled.blockquote`
