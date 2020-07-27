@@ -10,3 +10,7 @@ Connect yours social accounts and start debating over a topic.
 - Provide social network marketing.
 - Click rates, Event tracking and conversions on different social profiles.
 - Social Network Marketing Analysis.
+
+# Editor
+- Basic template editing
+- Provide Simple Template to Start with (A blank template).
