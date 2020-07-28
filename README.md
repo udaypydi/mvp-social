@@ -8,7 +8,7 @@ Connect yours social accounts and start debating over a topic.
   - Can create generic posts which allows the user to share it over multiple social accounts.
 
 - Provide social network marketing.
-- Click rates, Event tracking and conversions on different social profiles.
+- Click rates, Event tracking and conversions on different social profiles, CTR, CPR
 - Social Network Marketing Analysis.
 
 # Editor
