@@ -7,6 +7,17 @@ const { colors } = theme;
 
 export const TABS = [
     {
+        name: 'Templates',
+        key: 'TEMPLATES',
+        icon: styled(MdDashboard)`
+                color: ${(props) => props.color};
+                font-size: 2em;
+                &:hover {
+                    color: ${colors.primaryColor}!important;
+                }
+            `,
+    },
+    {
         name: 'Background',
         key: 'BACKGROUND',
         icon: styled(MdCropSquare)`
@@ -21,17 +32,6 @@ export const TABS = [
         name: 'Text',
         key: 'TEXT',
         icon: styled(MdTitle)`
-                color: ${(props) => props.color};
-                font-size: 2em;
-                &:hover {
-                    color: ${colors.primaryColor}!important;
-                }
-            `,
-    },
-    {
-        name: 'Templates',
-        key: 'TEMPLATES',
-        icon: styled(MdDashboard)`
                 color: ${(props) => props.color};
                 font-size: 2em;
                 &:hover {
