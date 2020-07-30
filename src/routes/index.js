@@ -22,8 +22,8 @@ const RouterDiv = styled.div`
 const ComponentDiv = styled.div`
   margin: 0;
   padding: 0;
-  margin-left: ${props => props.fullWidth ? 0 : '260px'};
-  width: ${props => props.fullWidth ? '100%' : 'calc(100vw - 260px)'};
+  margin-left: ${(props) => (props.fullWidth ? 0 : '260px')};
+  width: ${(props) => (props.fullWidth ? '100%' : 'calc(100vw - 260px)')};
   height: 100vh;
   display: flex;
   justify-content: center;
@@ -48,7 +48,7 @@ const DefaultLayout = ({ component: Component, common, ...rest }) => (
                 />
               )
             }
-            {
+        {
               common.sidebar && (
                 <Sidebar />
               )
@@ -66,7 +66,7 @@ function RoutesManager() {
   return (
     <Router>
       <Switch>
-        <DefaultLayout path="/create-post" common={{ header: false, sidebar: true }} component={CreatePost} />  
+        <DefaultLayout path="/create-post" common={{ header: false, sidebar: true }} component={CreatePost} />
         <DefaultLayout path="/post-editor" common={{ header: false, sidebar: false }} component={PostEditor} />
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />
       </Switch>

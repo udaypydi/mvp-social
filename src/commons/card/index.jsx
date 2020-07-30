@@ -6,8 +6,8 @@ const { colors } = theme;
 
 export const BasicCard = styled.div`
     display: flex;
-    height: ${props => props.height || '200 px'};
-    width: ${props => props.width || '200px'};
+    height: ${(props) => props.height || '200 px'};
+    width: ${(props) => props.width || '200px'};
     border-radius: 5px;
     border: 1px solid ${colors.basicCard};
     background-color: ${colors.basicCard};
@@ -21,5 +21,3 @@ export const BasicCard = styled.div`
 box-shadow: 0px 0px 33px -36px rgba(0,0,0,0.31);
     }
 `;
-
-

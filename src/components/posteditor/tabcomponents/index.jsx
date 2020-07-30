@@ -11,10 +11,9 @@ const SidebarContainer = styled.div`
 `;
 
 function TabComponents(props) {
-    return (
-        <SidebarContainer>
-        </SidebarContainer>
-    );
+  return (
+    <SidebarContainer />
+  );
 }
 
 export default TabComponents;
