@@ -2,10 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 function Button(props) {
-  const { 
-    buttonText, 
-    primary, 
-    className, 
+  const {
+    buttonText,
+    primary,
+    className,
     onClick,
   } = props;
   let btnClass = '';
@@ -14,11 +14,11 @@ function Button(props) {
     btnClass = 'bg-transparent hover:bg-blue-500 text-indigo-100 font-semibold hover:text-white py-2 px-4 border border-indigo-100 hover:border-transparent rounded';
   }
   return (
-    <button 
-      type="button" 
+    <button
+      type="button"
       className={`${btnClass} ${className}`}
       onClick={onClick}
-      >
+    >
       {buttonText}
     </button>
   );

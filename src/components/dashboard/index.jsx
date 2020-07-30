@@ -4,17 +4,17 @@ import { withRouter } from 'react-router-dom';
 import theme from 'src/theme';
 import { H3 } from 'src/commons/text';
 import Button from 'src/uielements/button/button.component';
-import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa'
+import { FaFacebook, FaTwitter, FaLinkedin } from 'react-icons/fa';
 
 const { colors } = theme;
 
 const Container = styled.div`
     display: flex;
     flex: 1;
-    justify-content: ${props => props.justify || 'center'};
-    align-items: ${props => props.align || 'center'};
-    flex-direction: ${props => props.flexDirection || 'column'};
-    height: ${props => props.height || 'auto'}
+    justify-content: ${(props) => props.justify || 'center'};
+    align-items: ${(props) => props.align || 'center'};
+    flex-direction: ${(props) => props.flexDirection || 'column'};
+    height: ${(props) => props.height || 'auto'}
 `;
 
 const CustomButton = styled(Button)`
@@ -30,40 +30,43 @@ const CustomButton = styled(Button)`
 `;
 
 function Dashboard(props) {
-    return (
-        <Container>
-            <Container 
-                justify="center" 
-                align="center" flexDirection="row"
-            >
-                <FaFacebook 
-                    size="4em" 
-                    color={colors.primaryColor} 
-                    style={{ margin: 10 }}
-                />
-                <FaTwitter 
-                    size="4em" 
-                    color={colors.primaryColor} 
-                    style={{ margin: 10 }}
-                />
-                <FaLinkedin 
-                    size="4em" 
-                    color={colors.primaryColor}
-                    style={{ margin: 10 }} 
-                />
-            </Container>
-            <H3 
-                weight="400"
-                margin="10px 0px 10px 0px"
-            >Create your social content with ease.</H3>
-            <CustomButton 
-                onClick={() => {
-                    props.history.push('/create-post');
-                }}
-                buttonText="Get Started!" 
-            />
-        </Container>
-    );
+  return (
+    <Container>
+      <Container
+        justify="center"
+        align="center"
+        flexDirection="row"
+      >
+        <FaFacebook
+          size="4em"
+          color={colors.primaryColor}
+          style={{ margin: 10 }}
+        />
+        <FaTwitter
+          size="4em"
+          color={colors.primaryColor}
+          style={{ margin: 10 }}
+        />
+        <FaLinkedin
+          size="4em"
+          color={colors.primaryColor}
+          style={{ margin: 10 }}
+        />
+      </Container>
+      <H3
+        weight="400"
+        margin="10px 0px 10px 0px"
+      >
+        Create your social content with ease.
+      </H3>
+      <CustomButton
+        onClick={() => {
+          props.history.push('/create-post');
+        }}
+        buttonText="Get Started!"
+      />
+    </Container>
+  );
 }
 
 export default withRouter(Dashboard);

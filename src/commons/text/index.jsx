@@ -8,7 +8,7 @@ export const H1 = styled.h1`
     font-family: ${fonts.primaryFont};
     font-weight: 300;
     color: ${(props) => props.color};
-    margin: ${props => props.margin || 0};
+    margin: ${(props) => props.margin || 0};
 `;
 
 export const H2 = styled.h2`
@@ -16,15 +16,15 @@ export const H2 = styled.h2`
     font-family: ${fonts.primaryFont};
     font-weight: 300;
     color: ${(props) => props.color};
-    margin: ${props => props.margin || 0};
+    margin: ${(props) => props.margin || 0};
 `;
 
 export const H3 = styled.h3`
     font-size: 1.5625rem;
     font-family: ${fonts.primaryFont};
-    font-weight: ${props => props.weight || '300'};
+    font-weight: ${(props) => props.weight || '300'};
     color: ${(props) => props.color};
-    margin: ${props => props.margin || 0};
+    margin: ${(props) => props.margin || 0};
 `;
 
 export const H4 = styled.h4`
@@ -32,7 +32,7 @@ export const H4 = styled.h4`
     font-family: ${fonts.primaryFont};
     font-weight: 300;
     color: ${(props) => props.color};
-    margin: ${props => props.margin || 0};
+    margin: ${(props) => props.margin || 0};
 `;
 
 export const H5 = styled.h5`
@@ -40,22 +40,22 @@ export const H5 = styled.h5`
     font-family: ${fonts.primaryFont};
     font-weight: 300;
     color: ${(props) => props.color};
-    margin: ${props => props.margin || 0};
+    margin: ${(props) => props.margin || 0};
 `;
 
 export const H6 = styled.h6`
     font-size: .75rem;
     font-family: ${fonts.primaryFont};
-    font-weight: ${props => props.weight ||300};
+    font-weight: ${(props) => props.weight || 300};
     color: ${(props) => props.color};
-    margin: ${props => props.margin || 0};
+    margin: ${(props) => props.margin || 0};
 `;
 
 export const Paragraph = styled.p`
     font-size: ${(props) => props.fontSize};
     font-family: ${fonts.primaryFont};
     color: ${(props) => props.color};
-    font-weight: ${props => props.weight || 300};
+    font-weight: ${(props) => props.weight || 300};
 `;
 
 export const Quote = styled.blockquote`

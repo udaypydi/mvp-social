@@ -7,10 +7,10 @@ import { TABS } from './tabs.constant';
 const { colors } = theme;
 
 const SidebarContainer = styled.div`
-    width: ${props => props.width || '5%'};
+    width: ${(props) => props.width || '5%'};
     display: flex;
-    flex-direction: ${props => props.direction || 'column'};
-    border: ${props => props.border || 'none'};
+    flex-direction: ${(props) => props.direction || 'column'};
+    border: ${(props) => props.border || 'none'};
     padding
     justify-content: flex-start;
     align-items: center;
@@ -37,26 +37,26 @@ const Container = styled.div`
 `;
 
 function Tabs({ onTabChange }) {
-    const [selectedTab, setSelectedTab] = useState('');
+  const [selectedTab, setSelectedTab] = useState('');
 
-    return (
-        <SidebarContainer border={selectedTab ? '1px solid #EEEEEE' : 'none'}>
-            {
-                TABS.map(tab =>(
-                    <Container 
-                        onClick={e => {
-                            onTabChange(tab.key);
-                            setSelectedTab(tab);
-                        }}
-                        key={tab.key}
-                    >
-                        <tab.icon />
-                        <Paragraph fontSize="12px">{tab.name}</Paragraph>
-                    </Container>    
+  return (
+    <SidebarContainer border={selectedTab ? '1px solid #EEEEEE' : 'none'}>
+      {
+                TABS.map((tab) => (
+                  <Container
+                    onClick={(e) => {
+                      onTabChange(tab.key);
+                      setSelectedTab(tab);
+                    }}
+                    key={tab.key}
+                  >
+                    <tab.icon />
+                    <Paragraph fontSize="12px">{tab.name}</Paragraph>
+                  </Container>
                 ))
             }
-        </SidebarContainer>
-    );
+    </SidebarContainer>
+  );
 }
 
 export default Tabs;
