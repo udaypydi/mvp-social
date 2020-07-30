@@ -33,7 +33,7 @@ function SideBar(props) {
     <div css={sideBarStyles.container}>
 
       <div css={sideBarStyles.logo}>
-        <Paragraph css={sideBarStyles.logoText}>Demo App</Paragraph>
+        <Paragraph css={sideBarStyles.logoText}>Social Content</Paragraph>
         <Divider />
       </div>
       <div css={sideBarStyles.sidebarWrapper}>

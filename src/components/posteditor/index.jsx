@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import Tabs from './tabs';
+import TabComponents from './tabcomponents';
 
 const Container = styled.div`
     display: flex;
@@ -22,9 +23,14 @@ const EditorCard = styled.div`
 `;
 
 function PostEditor(props) {
+    const [selectedTab, setSelectedTab] = useState('');
+
     return (
         <Container>
-            <Tabs />
+            <Tabs onTabChange={setSelectedTab} />
+            {
+                selectedTab && <TabComponents />
+            }
             <EditorCard />
         </Container>
     );
