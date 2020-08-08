@@ -6,6 +6,7 @@ import { MdKeyboardArrowLeft } from 'react-icons/md';
 import theme from 'src/theme';
 import { TAB_HEADER } from './tabcomponents.constant';
 import BackgrounTab from './background';
+import AddElements from './elements';
 
 const { colors } = theme;
 
@@ -62,6 +63,8 @@ function TabComponents({ selectedTab, onCloseSidebar }) {
             case 'BACKGROUND':
                 return <BackgrounTab />;
             
+            case 'ELEMENTS':
+                return <AddElements />
             default:
                 return null;
         }

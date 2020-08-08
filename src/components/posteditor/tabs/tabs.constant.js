@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import theme from 'src/theme';
-import { MdDashboard, MdCropSquare, MdTitle } from 'react-icons/md';
+import { MdDashboard, MdCropSquare, MdTitle, MdEdit } from 'react-icons/md';
 
 const { colors } = theme;
 
@@ -32,6 +32,17 @@ export const TABS = [
     name: 'Text',
     key: 'TEXT',
     icon: styled(MdTitle)`
+                color: ${(props) => props.color};
+                font-size: 2em;
+                &:hover {
+                    color: ${colors.primaryColor}!important;
+                }
+            `,
+  },
+  {
+    name: 'Elements',
+    key: 'ELEMENTS',
+    icon: styled(MdEdit)`
                 color: ${(props) => props.color};
                 font-size: 2em;
                 &:hover {
