@@ -5,6 +5,7 @@ import { jsx, css, keyframes } from '@emotion/core';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
 import theme from 'src/theme';
 import { TAB_HEADER } from './tabcomponents.constant';
+import BackgrounTab from './background';
 
 const { colors } = theme;
 
@@ -42,17 +43,39 @@ const Title = styled.h2`
     color: ${colors.primaryColor};
 `;
 
+const TabContent = styled.div`
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+`;
+
 const LeftArrow = styled(MdKeyboardArrowLeft)`
     cursor: pointer;
 `;
 
 function TabComponents({ selectedTab, onCloseSidebar }) {
+
+    function renderTabContent() {
+        switch (selectedTab) {
+            case 'BACKGROUND':
+                return <BackgrounTab />;
+            
+            default:
+                return null;
+        }
+    }
+    
   return (
     <SidebarContainer>
       <TitleContainer>
         <LeftArrow size="2em" onClick={onCloseSidebar} />
         <Title>{TAB_HEADER[selectedTab]}</Title>
       </TitleContainer>
+    <TabContent>
+        {renderTabContent()}
+    </TabContent>
     </SidebarContainer>
   );
 }
