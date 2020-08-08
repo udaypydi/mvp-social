@@ -49,11 +49,11 @@ const LeftArrow = styled(MdKeyboardArrowLeft)`
 function TabComponents({ selectedTab, onCloseSidebar }) {
   return (
     <SidebarContainer>
-        <TitleContainer>
-            <LeftArrow size="2em" onClick={onCloseSidebar} />
-            <Title>{TAB_HEADER[selectedTab]}</Title>
-        </TitleContainer>
-     </SidebarContainer>   
+      <TitleContainer>
+        <LeftArrow size="2em" onClick={onCloseSidebar} />
+        <Title>{TAB_HEADER[selectedTab]}</Title>
+      </TitleContainer>
+    </SidebarContainer>
   );
 }
 

@@ -31,7 +31,7 @@ const Container = styled.div`
     cursor: pointer;
     width: 100%;
     padding: 7px;
-    color: ${props => props.color || '#000000'};
+    color: ${(props) => props.color || '#000000'};
     &:hover {
         color: ${colors.primaryColor} !important;
     }
@@ -50,7 +50,7 @@ function Tabs({ onTabChange }) {
                       setSelectedTab(tab.key);
                     }}
                     key={tab.key}
-                    color={selectedTab === tab.key ? colors.primaryColor : '#000000'} 
+                    color={selectedTab === tab.key ? colors.primaryColor : '#000000'}
                   >
                     <tab.icon />
                     <Paragraph fontSize="12px">{tab.name}</Paragraph>
