@@ -17,7 +17,7 @@ const AnimatedTabComponent = styled(animated(TabComponents))``;
 
 
 function PostEditor(props) {
-  const [selectedTab, setSelectedTab] = useState('');
+  const [selectedTab, setSelectedTab] = useState('TEMPLATES');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
   const springProps = useSpring({
