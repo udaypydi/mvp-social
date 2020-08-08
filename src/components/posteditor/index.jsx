@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import { useSpring, animated } from 'react-spring';
+
 import Tabs from './tabs';
 import TabComponents from './tabcomponents';
+
 
 const Container = styled.div`
     display: flex;
@@ -20,18 +23,42 @@ const EditorCard = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    margin-left: ${(props) => props.marginLeft || '0'};
 `;
+
+const AnimatedTabComponent = styled(animated(TabComponents))``;
+
 
 function PostEditor(props) {
   const [selectedTab, setSelectedTab] = useState('');
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const springProps = useSpring({
+    from: { width: 0 },
+    to: { width: 200 },
+  });
+
+  useEffect(() => {
+    if (selectedTab) {
+      setIsSidebarOpen(true);
+    }
+  }, [selectedTab]);
 
   return (
     <Container>
       <Tabs onTabChange={setSelectedTab} />
       {
-                selectedTab && <TabComponents />
-            }
-      <EditorCard />
+            isSidebarOpen && (
+            <AnimatedTabComponent
+              selectedTab={selectedTab}
+              style={{ springProps }}
+              onCloseSidebar={() => setIsSidebarOpen(false)}
+            />
+            )
+        }
+      <EditorCard
+        marginLeft={isSidebarOpen ? '10%' : 0}
+      />
     </Container>
   );
 }
