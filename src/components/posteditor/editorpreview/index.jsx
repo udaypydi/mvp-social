@@ -20,6 +20,15 @@ const EditorCard = styled.div`
 
 function EditorPreview({ template, isSidebarOpen }) {
 
+    const editorRef = React.createRef(null);
+
+    useEffect(() => {
+        const frameElement = editorRef.current;
+        frameElement.addEventListener('click', (event) => {
+            console.log(event.target);
+        });
+    }, []);
+    
     return (
         <EditorCard
             marginLeft={isSidebarOpen ? '10%' : 0}
@@ -28,6 +37,7 @@ function EditorPreview({ template, isSidebarOpen }) {
                 srcDoc={template}
                 style={{ width: '100%', height: '100%' }}
                 id="cmp-editor"
+                ref={editorRef}
             />
       </EditorCard>
     );
