@@ -48,9 +48,17 @@ function PostEditor(props) {
     <Container>
       <Tabs onTabChange={setSelectedTab} />
         {
-            isSidebarOpen && <AnimatedTabComponent style={{ springProps }} />
+            isSidebarOpen && (
+                <AnimatedTabComponent  
+                    selectedTab={selectedTab} 
+                    style={{ springProps }} 
+                    onCloseSidebar={() => setIsSidebarOpen(false)}
+                />
+            )
         }
-      <EditorCard marginLeft={isSidebarOpen ? '10%' : 0} />
+      <EditorCard 
+        marginLeft={isSidebarOpen ? '10%' : 0} 
+      />
     </Container>
   );
 }
