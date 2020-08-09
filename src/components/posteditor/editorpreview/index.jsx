@@ -1,9 +1,10 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
+import { useDrag } from 'react-dnd'
 import PropTypes from 'prop-types';
 
 
-const EditorCard = styled.div`
+const EditorCard = styled.canvas`
     height: ${(props) => props.height || '40%'};
     width: ${(props) => props.width || '40%'};
     background: #ffffff;
@@ -19,26 +20,15 @@ const EditorCard = styled.div`
 
 
 function EditorPreview({ template, isSidebarOpen }) {
-
-    const editorRef = React.createRef(null);
-
-    useEffect(() => {
-        const frameElement = editorRef.current;
-        frameElement.addEventListener('click', (event) => {
-            console.log(event.target);
-        });
-    }, []);
+    const canvasRef = React.createRef(null);
     
     return (
         <EditorCard
             marginLeft={isSidebarOpen ? '10%' : 0}
+            id="cmp-canvas"
+            ref={canvasRef}
         >
-            <iframe 
-                srcDoc={template}
-                style={{ width: '100%', height: '100%' }}
-                id="cmp-editor"
-                ref={editorRef}
-            />
+         
       </EditorCard>
     );
 }
