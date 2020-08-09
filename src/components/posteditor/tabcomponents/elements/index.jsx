@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import styled from '@emotion/styled';
 /** @jsx jsx */
 import { jsx, css, keyframes } from '@emotion/core';
-import { MdCropSquare, MdImage } from 'react-icons/md';
-import theme from 'src/theme';
+import { MdCropSquare, MdImage, MdButt } from 'react-icons/md';
+import PropTypes from 'prop-types';
 
 
 const Container = styled.div`
@@ -18,18 +18,31 @@ const Container = styled.div`
 
 
 function AddElements(props) {
+    const { addElement } = props;
+
     return (
         <Container>
             <Container direction="column">
                 <MdCropSquare size="3rem" style={{ fontWeight: 'normal' }} />
                 <p>Container</p>
             </Container>
-            <Container direction="column">
+            <Container 
+                direction="column"
+                onClick={() => addElement('IMAGE')}
+            >
                 <MdImage size="3rem" style={{ fontWeight: 'normal' }} />
                 <p>Image</p>
             </Container>
         </Container>
     );
 }
+
+AddElements.propTypes = {
+    addElement: PropTypes.func,
+};
+
+AddElements.defaultProps = {
+    addElement: null,
+};
 
 export default AddElements;
