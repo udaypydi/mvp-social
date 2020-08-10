@@ -16,3 +16,4 @@ Connect yours social accounts and start debating over a topic.
 - Provide Simple Template to Start with (A blank template).
 - Add background, template, elements tab.
 - Add canvas and render templates on the canvas.
+- Manage editor state through recoil.
