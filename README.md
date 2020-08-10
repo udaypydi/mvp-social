@@ -15,3 +15,4 @@ Connect yours social accounts and start debating over a topic.
 - Basic template editing
 - Provide Simple Template to Start with (A blank template).
 - Add background, template, elements tab.
+- Add canvas and render templates on the canvas.
