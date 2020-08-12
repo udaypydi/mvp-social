@@ -17,3 +17,4 @@ Connect yours social accounts and start debating over a topic.
 - Add background, template, elements tab.
 - Add canvas and render templates on the canvas.
 - Manage editor state through recoil.
+- use grapejs for editor as a POC
