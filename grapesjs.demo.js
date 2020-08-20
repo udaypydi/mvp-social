@@ -2,6 +2,9 @@ import React, { useEffect } from "react";
 import grapesjs from "grapesjs";
 import "./styles.css";
 
+
+// grapes js editor demo 
+
 export default function App() {
   useEffect(() => {
     grapesjs.init({
