@@ -1,4 +1,7 @@
 import React, { useEffect } from "react";
+
+// grapesjs package
+
 import grapesjs from "grapesjs";
 import "./styles.css";
 
