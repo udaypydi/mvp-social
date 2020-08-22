@@ -54,8 +54,8 @@ function PostEditor(props) {
         <Editor 
             id="castmypost-editor"
             presetType="newsletter"
-            width={1000}
-            height={1000}
+            width="auto"
+            height="100vh"
         />
     </Container>
   );
