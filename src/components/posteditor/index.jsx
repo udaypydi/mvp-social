@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import { useSpring, animated } from 'react-spring';
+import Editor from 'grapesjs-react';
 import { TEMPLATE } from './templates';
 import Tabs from './tabs';
 import TabComponents from './tabcomponents';
 import EditorPreview from './editorpreview';
+
+import 'grapesjs/dist/css/grapes.min.css';
+
 
 const Container = styled.div`
     display: flex;
@@ -33,7 +37,7 @@ function PostEditor(props) {
 
   return (
     <Container>
-      {/* <Tabs onTabChange={setSelectedTab} />
+      {/* <Tabs onTabChange={setSelectedTab}g />
       {
             isSidebarOpen && (
             <AnimatedTabComponent
@@ -47,6 +51,12 @@ function PostEditor(props) {
             isSidebarOpen={isSidebarOpen}
             template={TEMPLATE}
         /> */}
+        <Editor 
+            id="castmypost-editor"
+            presetType="newsletter"
+            width={1000}
+            height={1000}
+        />
     </Container>
   );
 }
