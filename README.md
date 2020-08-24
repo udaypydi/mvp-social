@@ -19,3 +19,4 @@ Connect yours social accounts and start debating over a topic.
 - Manage editor state through recoil.
 - use grapejs for editor as a POC
 - add social network integrations plugins
+- Allow grapejs to stretch full screen on load and show sidebar.
