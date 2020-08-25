@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 
 import grapesjs from "grapesjs";
-import "./styles.css";
 
 export default function App() {
   useEffect(() => {
