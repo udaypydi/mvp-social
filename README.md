@@ -20,3 +20,4 @@ Connect yours social accounts and start debating over a topic. Create your own s
 - add social network integrations plugins
 - Allow grapejs to stretch full screen on load and show sidebar.
 - Integrate social accounts
+- Add once and post everywhere.
