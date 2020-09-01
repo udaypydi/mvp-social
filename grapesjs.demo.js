@@ -2,8 +2,6 @@ import React, { useEffect } from "react";
 
 import grapesjs from "grapesjs";
 
-// demo grape js
-
 export default function App() {
   useEffect(() => {
     grapesjs.init({
