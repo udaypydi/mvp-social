@@ -21,3 +21,4 @@ Connect yours social accounts and start debating over a topic. Create your own s
 - Allow grapejs to stretch full screen on load and show sidebar.
 - Integrate social accounts
 - Add once and post everywhere.
+- 60 days refresh token for all social accounts.
