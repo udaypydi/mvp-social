@@ -1,4 +1,4 @@
-# Social Network MVP 
+# Social Network 
 Connect yours social accounts and start debating over a topic. Create your own social network. Analyze all social networks at a single place.
 
 # TODO
