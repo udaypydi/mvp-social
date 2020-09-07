@@ -1,5 +1,5 @@
 # Social Network 
-Connect yours social accounts and start debating over a topic. Create your own social network. Analyze all social networks at a single place.
+Connect yours social accounts and start debating over a topic. Create your own social network. Analyze all social networks at a single place. 
 
 # TODO
 
@@ -16,10 +16,10 @@ Connect yours social accounts and start debating over a topic. Create your own s
 - Add background, template, elements tab.
 - Add canvas and render templates on the canvas.
 - Manage editor state through recoil.
-- use grapejs for editor as a POC
-- add social network integrations plugins
+- use grapejs for editor as a POC.
+- add social network integrations plugins.
 - Allow grapejs to stretch full screen on load and show sidebar.
-- Integrate social accounts
+- Integrate social accounts.
 - Add once and post everywhere.
 - 60 days refresh token for all social accounts.
 - Facebook, Twitter, Instagram Integration.
