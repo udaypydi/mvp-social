@@ -1,5 +1,5 @@
 # Social Network 
-Connect yours social accounts and start debating over a topic. 
+Connect yours social accounts and start debating over a topic. (Facebook, Twitter, LinkedIn, Instagram).
 Create your own social network. Analyze all social networks at a single place. 
 
 # TODO
