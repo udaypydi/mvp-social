@@ -1,6 +1,8 @@
 # Social Network 
 Connect yours social accounts and start debating over a topic. (Facebook, Twitter, LinkedIn, Instagram).
+
 Create your own social network. Analyze all social networks at a single place. Get analytics of each and every social network.
+
 Add once, post everywhere.
 
 # TODO
@@ -26,4 +28,4 @@ Add once, post everywhere.
 - 60 days refresh token for all social accounts.
 - Facebook, Twitter, Instagram Integration.
 - OAuth and password manager
-- Predefined templates
+- Predefined templates.
