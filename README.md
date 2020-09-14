@@ -1,11 +1,6 @@
 # Social Network 
 Connect yours social accounts and start debating over a topic. (Facebook, Twitter, LinkedIn, Instagram).
-
 Create your own social network. Analyze all social networks at a single place. Get analytics of each and every social network.
-
-Add once, post everywhere.
-
-Post creating tool.
 
 # TODO
 
