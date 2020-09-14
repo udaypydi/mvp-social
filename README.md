@@ -5,10 +5,15 @@ Create your own social network. Analyze all social networks at a single place. G
 # TODO
 
 - Create a Post
-  - Can be designed for a specific social profile (Facebook, Twitter, Linkedin)
+
+  - Can be designed for a specific social profile (Facebook, Twitter, Linkedin).
+  
   - Can create generic posts which allows the user to share it over multiple social accounts.
+  
 - Provide social network marketing.
-- Click rates, Event tracking and conversions on different social profiles, CTR, CPR
+
+- Click rates, Event tracking and conversions on different social profiles, CTR, CPR.
+
 - Social Network Marketing Analysis.
 
 # Editor
