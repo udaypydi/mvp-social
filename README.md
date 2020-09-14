@@ -1,5 +1,7 @@
-# Social Network 
+# Social Network
+
 Connect yours social accounts and start debating over a topic. (Facebook, Twitter, LinkedIn, Instagram).
+
 Create your own social network. Analyze all social networks at a single place. Get analytics of each and every social network.
 
 # TODO
@@ -17,17 +19,31 @@ Create your own social network. Analyze all social networks at a single place. G
 - Social Network Marketing Analysis.
 
 # Editor
-- Basic template editing
+
+- Basic template editing.
+
 - Provide Simple Template to Start with (A blank template).
+
 - Add background, template, elements tab.
+
 - Add canvas and render templates on the canvas.
+
 - Manage editor state through recoil.
+
 - use grapejs for editor as a POC.
+
 - add social network integrations plugins.
+
 - Allow grapejs to stretch full screen on load and show sidebar.
+
 - Integrate social accounts.
+
 - Add once and post everywhere.
+
 - 60 days refresh token for all social accounts.
+
 - Facebook, Twitter, Instagram Integration.
-- OAuth and password manager
+
+- OAuth and password manager.
+
 - Predefined templates.
