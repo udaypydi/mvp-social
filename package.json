@@ -1,5 +1,5 @@
 {
-  "name": "react-simple-boilerplate",
+  "name": "mvp-social",
   "version": "1.0.0",
   "description": "Simple react boilerplate with support for travis ci, webpack, sass etc.",
   "main": "index.js",
