@@ -51,3 +51,6 @@ Get analytics of each and every social network.
 - OAuth and password manager.
 
 - Predefined templates.
+
+- Social Media Integration
+
