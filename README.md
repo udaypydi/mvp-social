@@ -53,4 +53,3 @@ Get analytics of each and every social network.
 - Predefined templates.
 
 - Social Media Integration.
-
