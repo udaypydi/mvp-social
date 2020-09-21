@@ -34,9 +34,9 @@ Get analytics of each and every social network.
 
 - Manage editor state through recoil.
 
-- use grapejs for editor as a POC.
+- Use grapejs for editor as a POC.
 
-- add social network integrations plugins.
+- Add social network integrations plugins.
 
 - Allow grapejs to stretch full screen on load and show sidebar.
 
