@@ -1,4 +1,4 @@
-# Social Network
+# Social Network Management Dashboard
 
 Connect yours social accounts and start debating over a topic. (Facebook, Twitter, LinkedIn, Instagram).
 
