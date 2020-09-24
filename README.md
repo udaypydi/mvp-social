@@ -8,6 +8,8 @@ Analyze all social networks at a single place.
 
 Get analytics of each and every social network.
 
+Create a social network chat bot.
+
 # TODO
 
 - Create a Post
