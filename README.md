@@ -1,5 +1,7 @@
 # Social Network Management Dashboard
 
+Manage social networks in a single dashboard.
+
 Connect yours social accounts and start debating over a topic. (Facebook, Twitter, LinkedIn, Instagram).
 
 Create your own social network. 
