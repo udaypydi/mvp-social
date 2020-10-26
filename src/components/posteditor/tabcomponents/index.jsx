@@ -57,28 +57,27 @@ const LeftArrow = styled(MdKeyboardArrowLeft)`
 `;
 
 function TabComponents({ selectedTab, onCloseSidebar }) {
+  function renderTabContent() {
+    switch (selectedTab) {
+      case 'BACKGROUND':
+        return <BackgrounTab />;
 
-    function renderTabContent() {
-        switch (selectedTab) {
-            case 'BACKGROUND':
-                return <BackgrounTab />;
-            
-            case 'ELEMENTS':
-                return <AddElements />
-            default:
-                return null;
-        }
+      case 'ELEMENTS':
+        return <AddElements />;
+      default:
+        return null;
     }
-    
+  }
+
   return (
     <SidebarContainer>
       <TitleContainer>
         <LeftArrow size="2em" onClick={onCloseSidebar} />
         <Title>{TAB_HEADER[selectedTab]}</Title>
       </TitleContainer>
-    <TabContent>
+      <TabContent>
         {renderTabContent()}
-    </TabContent>
+      </TabContent>
     </SidebarContainer>
   );
 }

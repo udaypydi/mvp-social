@@ -17,19 +17,18 @@ const Container = styled.div`
 `;
 
 
-
 function BackgroundTab(props) {
-    const [background, setBackground] = useState('#ffffff');
+  const [background, setBackground] = useState('#ffffff');
 
-    return (
-        <Container>
-            <ColorPicker 
-                onChangeComplete={color => {
-                    setBackground(color.hex);
-                }}
-            />
-        </Container>
-    );
+  return (
+    <Container>
+      <ColorPicker
+        onChangeComplete={(color) => {
+          setBackground(color.hex);
+        }}
+      />
+    </Container>
+  );
 }
 
 export default BackgroundTab;

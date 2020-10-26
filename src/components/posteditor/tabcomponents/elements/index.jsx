@@ -8,7 +8,7 @@ import PropTypes from 'prop-types';
 
 const Container = styled.div`
     display: flex;
-    flex-direction: ${props => props.direction || 'row'};
+    flex-direction: ${(props) => props.direction || 'row'};
     flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
@@ -18,31 +18,31 @@ const Container = styled.div`
 
 
 function AddElements(props) {
-    const { addElement } = props;
+  const { addElement } = props;
 
-    return (
-        <Container>
-            <Container direction="column">
-                <MdCropSquare size="3rem" style={{ fontWeight: 'normal' }} />
-                <p>Container</p>
-            </Container>
-            <Container 
-                direction="column"
-                onClick={() => addElement('IMAGE')}
-            >
-                <MdImage size="3rem" style={{ fontWeight: 'normal' }} />
-                <p>Image</p>
-            </Container>
-        </Container>
-    );
+  return (
+    <Container>
+      <Container direction="column">
+        <MdCropSquare size="3rem" style={{ fontWeight: 'normal' }} />
+        <p>Container</p>
+      </Container>
+      <Container
+        direction="column"
+        onClick={() => addElement('IMAGE')}
+      >
+        <MdImage size="3rem" style={{ fontWeight: 'normal' }} />
+        <p>Image</p>
+      </Container>
+    </Container>
+  );
 }
 
 AddElements.propTypes = {
-    addElement: PropTypes.func,
+  addElement: PropTypes.func,
 };
 
 AddElements.defaultProps = {
-    addElement: null,
+  addElement: null,
 };
 
 export default AddElements;
