@@ -4,7 +4,7 @@ const { BundleAnalyzerPlugin } = require('webpack-bundle-analyzer');
 const webpackBaseConfig = require('./webpack.base.config');
 
 const handler = (percentage, message, ...args) => {
-    console.info(percentage * 100, message, ...args);
+    console.info(Math.round(percentage * 100), message, ...args);
 };
   
 module.exports = {
