@@ -58,3 +58,5 @@ Get analytics of each and every social network.
 - Social Media Integration.
 
 - Scheduled reminders.
+
+- Use passport js or some other oauth mechanisms to authenticate social profiles
