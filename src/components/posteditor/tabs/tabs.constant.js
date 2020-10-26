@@ -1,7 +1,9 @@
 import React from 'react';
 import styled from '@emotion/styled';
 import theme from 'src/theme';
-import { MdDashboard, MdCropSquare, MdTitle, MdEdit } from 'react-icons/md';
+import {
+  MdDashboard, MdCropSquare, MdTitle, MdEdit,
+} from 'react-icons/md';
 
 const { colors } = theme;
 

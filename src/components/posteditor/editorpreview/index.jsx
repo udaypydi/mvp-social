@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from '@emotion/styled';
-import { useDrag } from 'react-dnd'
+import { useDrag } from 'react-dnd';
 import PropTypes from 'prop-types';
 
 
@@ -20,26 +20,24 @@ const EditorCard = styled.canvas`
 
 
 function EditorPreview({ template, isSidebarOpen }) {
-    const canvasRef = React.createRef(null);
-    
-    return (
-        <EditorCard
-            marginLeft={isSidebarOpen ? '10%' : 0}
-            id="cmp-canvas"
-            ref={canvasRef}
-        >
-         
-      </EditorCard>
-    );
+  const canvasRef = React.createRef(null);
+
+  return (
+    <EditorCard
+      marginLeft={isSidebarOpen ? '10%' : 0}
+      id="cmp-canvas"
+      ref={canvasRef}
+    />
+  );
 }
 
 EditorPreview.propTypes = {
-    template: PropTypes.string,
-    isSidebarOpen: PropTypes.bool.isRequired,
+  template: PropTypes.string,
+  isSidebarOpen: PropTypes.bool.isRequired,
 };
 
 EditorPreview.defaultProps = {
-    template: '',
+  template: '',
 };
 
 export default EditorPreview;

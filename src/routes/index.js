@@ -6,7 +6,7 @@ import Header from 'src/commons/header/header.component';
 import Sidebar from 'src/commons/sidebar';
 import CreatePost from 'src/components/createpost';
 import PostEditor from 'src/components/posteditor';
-import ManageAccount from 'src/components/manageaccounts'
+import ManageAccount from 'src/components/manageaccounts';
 import App from 'src/app';
 
 const { colors } = theme;

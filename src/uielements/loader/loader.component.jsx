@@ -1,7 +1,7 @@
 import React from 'react';
 import './loader.scss';
 
-//common loader component
+// common loader component
 
 export default function Loader() {
   return (
