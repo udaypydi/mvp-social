@@ -6,6 +6,7 @@ import Header from 'src/commons/header/header.component';
 import Sidebar from 'src/commons/sidebar';
 import CreatePost from 'src/components/createpost';
 import PostEditor from 'src/components/posteditor';
+import ManageAccount from 'src/components/manageaccounts'
 import App from 'src/app';
 
 const { colors } = theme;
@@ -37,22 +38,22 @@ const DefaultLayout = ({ component: Component, common, ...rest }) => (
     render={(matchProps) => (
       <RouterDiv>
         {
-              common.header && (
-                <Header
-                  changeHeaderColorOnScroll={false}
-                  headerColor={colors.primaryColor}
-                  headerColor="transparent"
-                  headerText={common.headerText}
-                  showHeaderElements
-                  isLoggedIn
-                />
-              )
-            }
+          common.header && (
+            <Header
+              changeHeaderColorOnScroll={false}
+              headerColor={colors.primaryColor}
+              headerColor="transparent"
+              headerText={common.headerText}
+              showHeaderElements
+              isLoggedIn
+            />
+          )
+        }
         {
-              common.sidebar && (
-                <Sidebar />
-              )
-            }
+          common.sidebar && (
+            <Sidebar />
+          )
+        }
         <ComponentDiv fullWidth={!common.sidebar}>
           <Component {...matchProps} />
         </ComponentDiv>
@@ -68,6 +69,8 @@ function RoutesManager() {
       <Switch>
         <DefaultLayout path="/create-post" common={{ header: false, sidebar: true }} component={CreatePost} />
         <DefaultLayout path="/post-editor" common={{ header: false, sidebar: false }} component={PostEditor} />
+        <DefaultLayout path="/manage-accounts" common={{ header: false, sidebar: true }} component={ManageAccount} />
+        <DefaultLayout path="/dashboard" common={{ header: false, sidebar: true }} component={App} />
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />
       </Switch>
     </Router>

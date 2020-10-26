@@ -19,17 +19,17 @@ export const SIDEBAR_ELEMENTS = [
   },
   {
     title: 'Analyze Accounts',
-    routes: '/dashboard',
+    route: '/dashboard',
     icon: styled(FaChartArea)`color: ${(props) => props.color}`,
   },
   {
     title: 'Manage Accounts',
-    routes: '/dashboard',
+    route: '/manage-accounts',
     icon: styled(MdEventNote)`color: ${(props) => props.color}`,
   },
   {
     title: 'My Profile',
-    routes: '/dashboard',
+    route: '/dashboard',
     icon: styled(MdPerson)`color: ${(props) => props.color}`,
   },
 ];
