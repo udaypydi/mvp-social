@@ -32,6 +32,7 @@
     "@emotion/styled": "^10.0.17",
     "autoprefixer": "^9.7.6",
     "babel-loader": "^8.1.0",
+    "classnames": "^2.2.6",
     "grapesjs": "^0.16.18",
     "grapesjs-react": "^3.1.1",
     "postcss-cli": "^7.1.0",

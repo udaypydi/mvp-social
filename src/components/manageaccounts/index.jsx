@@ -56,6 +56,7 @@ function ManageAccount(props) {
           showModal={showAccountsModal}
           onModalToggle={setShowAccountsModal}
           showActionButtons={false}
+          modalType="large"
         />
     </React.Fragment>
   );

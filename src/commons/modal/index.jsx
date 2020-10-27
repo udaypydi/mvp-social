@@ -1,8 +1,22 @@
 import React from "react";
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 
-function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle }) {
+function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle, modalType }) {
+
+  const getModalWidth = () => {
+      if (modalType === 'small') {
+          return 400;
+      }
+
+      if (modalType === 'medium') {
+          return 600;
+      }
+
+      return 800;
+  };
+  
   return (
     <>
       {showModal ? (
@@ -13,7 +27,12 @@ function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle }
           >
             <div className="relative w-auto my-6 mx-auto max-w-6xl">
            
-              <div className="border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+              <div 
+                className={cx("border-0 rounded-lg shadow-lg relative flex flex-col bg-white outline-none focus:outline-none max-w-6xl")}
+                style={{
+                    width: getModalWidth()
+                }}
+            >
         
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
                   <h3 className="text-3xl font-semibold">
@@ -70,6 +89,7 @@ Modal.propTypes = {
     modalBody: PropTypes.node,
     showActionButtons: PropTypes.bool,
     onModalToggle: PropTypes.func,
+    modalType: PropTypes.string,
 };
 
 Modal.defaultProps = {
@@ -78,6 +98,7 @@ Modal.defaultProps = {
     modalBody: null,
     showActionButtons: true,
     onModalToggle: () => null,
+    modalType: 'medium'
 };
 
 export default Modal;
