@@ -52,7 +52,7 @@ function ManageAccount(props) {
           </div>
         </Container>
         <Modal
-          title="Add accounts"
+          title="Add Accounts"
           showModal={showAccountsModal}
           onModalToggle={setShowAccountsModal}
           showActionButtons={false}

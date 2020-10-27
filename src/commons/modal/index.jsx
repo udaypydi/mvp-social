@@ -1,7 +1,7 @@
 import React from "react";
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-
+import { H3 } from 'src/commons/text';
 
 function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle, modalType }) {
 
@@ -16,7 +16,7 @@ function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle, 
 
       return 800;
   };
-  
+
   return (
     <>
       {showModal ? (
@@ -35,9 +35,9 @@ function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle, 
             >
         
                 <div className="flex items-start justify-between p-5 border-b border-solid border-gray-300 rounded-t">
-                  <h3 className="text-3xl font-semibold">
+                  <H3>
                     {title}
-                  </h3>
+                  </H3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
                     onClick={() => onModalToggle(false)}
