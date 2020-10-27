@@ -1,16 +1,14 @@
 import React, { useState } from "react";
 import PropTypes from 'prop-types';
 
-function Modal({ showModal, title, modalBody, showActionButtons }) {
-  const [showModal, setShowModal] = useState(showModal);
-
+function Modal({ showModal, title, modalBody, showActionButtons, onModalToggle }) {
   return (
     <>
       {showModal ? (
         <>
           <div
             className="justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none"
-            onClick={() => setShowModal(false)}
+            onClick={() => onModalToggle(false)}
           >
             <div className="relative w-auto my-6 mx-auto max-w-3xl">
            
@@ -22,7 +20,7 @@ function Modal({ showModal, title, modalBody, showActionButtons }) {
                   </h3>
                   <button
                     className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    onClick={() => setShowModal(false)}
+                    onClick={() => onModalToggle(false)}
                   >
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
@@ -39,7 +37,7 @@ function Modal({ showModal, title, modalBody, showActionButtons }) {
                             className="text-red-500 background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1"
                             type="button"
                             style={{ transition: "all .15s ease" }}
-                            onClick={() => setShowModal(false)}
+                            onClick={() => onModalToggle(false)}
                             >
                             Close
                             </button>
@@ -47,7 +45,7 @@ function Modal({ showModal, title, modalBody, showActionButtons }) {
                             className="bg-green-500 text-white active:bg-green-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1"
                             type="button"
                             style={{ transition: "all .15s ease" }}
-                            onClick={() => setShowModal(false)}
+                            onClick={() => onModalToggle(false)}
                             >
                             Save Changes
                             </button>
@@ -70,6 +68,7 @@ Modal.propTypes = {
     title: PropTypes.string,
     modalBody: PropTypes.node,
     showActionButtons: PropTypes.bool,
+    onModalToggle: PropTypes.func,
 };
 
 Modal.defaultProps = {
@@ -77,6 +76,7 @@ Modal.defaultProps = {
     title: '',
     modalBody: null,
     showActionButtons: true,
+    onModalToggle: () => null,
 };
 
 export default Modal;
