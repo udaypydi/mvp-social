@@ -14,7 +14,7 @@ export const ACCOUNTS_LIST = [
     {
         name: 'Facebook',
         icon: styled(FaFacebookSquare)`
-                color: ${(props) => props.color || colors.primaryColor};
+                color: ${(props) => props.color || colors.facebookColor};
                 cursor: pointer;
                 &:hover {
                     transform: scale(1.1);
@@ -24,7 +24,7 @@ export const ACCOUNTS_LIST = [
     {
         name: 'Twitter',
         icon: styled(FaTwitterSquare)`
-                color: ${(props) => props.color || colors.primaryColor};
+                color: ${(props) => props.color || colors.twitterColor};
                 cursor: pointer;
                 &:hover {
                     transform: scale(1.1);
@@ -34,7 +34,7 @@ export const ACCOUNTS_LIST = [
     {
         name: 'Linkedin',
         icon: styled(FaLinkedin)`
-                color: ${(props) => props.color || colors.primaryColor};
+                color: ${(props) => props.color || colors.linkedinColorCode};
                 cursor: pointer;
                 &:hover {
                     transform: scale(1.1);
