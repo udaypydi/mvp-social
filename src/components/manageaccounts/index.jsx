@@ -4,6 +4,7 @@ import { Paragraph } from 'src/commons/text';
 import { FaPlus } from 'react-icons/fa';
 import { BasicCard } from 'src/commons/card';
 import Modal from 'src/commons/modal';
+import { ACCOUNTS_LIST } from './manageaccounts.constant';
 
 const Container = styled.div`
     display: flex;
@@ -18,6 +19,23 @@ const Container = styled.div`
 
 function ManageAccount(props) {
   const [showAccountsModal, setShowAccountsModal] = useState(false);
+
+  function renderModalBody() {
+    return (
+      <Container
+          justify="space-evenly"
+          align="flex-start"
+          height="100%"
+          flexDirection="row"
+        >
+        {
+          ACCOUNTS_LIST.map(account => (
+            <account.icon fontSize="100px" />
+          ))
+        }
+      </Container>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -56,6 +74,7 @@ function ManageAccount(props) {
           showModal={showAccountsModal}
           onModalToggle={setShowAccountsModal}
           showActionButtons={false}
+          modalBody={renderModalBody()}
           modalType="large"
         />
     </React.Fragment>
