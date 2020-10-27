@@ -20,6 +20,7 @@ export const ACCOUNTS_LIST = [
                     transform: scale(1.1);
                 }
               `,
+        api: '/auth-facebook',
     },
     {
         name: 'Twitter',
@@ -30,9 +31,10 @@ export const ACCOUNTS_LIST = [
                     transform: scale(1.1);
                 }
             `,
+        api: '/auth-twitter',
     },
     {
-        name: 'Linkedin',
+        name: 'LinkedIn',
         icon: styled(FaLinkedin)`
                 color: ${(props) => props.color || colors.linkedinColorCode};
                 cursor: pointer;
@@ -40,5 +42,6 @@ export const ACCOUNTS_LIST = [
                     transform: scale(1.1);
                 }
             `,
+        api: '/auth-linkedin',
     },
 ]
