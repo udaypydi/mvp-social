@@ -7,4 +7,7 @@ export default {
   defaultColor: '#F8F7EF',
   containerBackground: '#EEEEEE',
   basicCard: '#dfe0e5',
+  facebookColor: '#3b5998',
+  twitterColor: '#00acee',
+  linkedinColorCode: '#0e76a8',
 };
