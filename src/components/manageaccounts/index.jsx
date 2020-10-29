@@ -20,6 +20,10 @@ const Container = styled.div`
 function ManageAccount(props) {
   const [showAccountsModal, setShowAccountsModal] = useState(false);
 
+  handleSocialAccountSelect = (account) => {
+    const { api } = account;
+  };
+
   function renderModalBody() {
     return (
       <Container
@@ -30,7 +34,7 @@ function ManageAccount(props) {
         >
         {
           ACCOUNTS_LIST.map(account => (
-            <account.icon fontSize="100px" />
+            <account.icon fontSize="100px" onClick={() => handleSocialAccountSelect(account)} />
           ))
         }
       </Container>
