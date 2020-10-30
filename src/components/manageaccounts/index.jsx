@@ -20,7 +20,7 @@ const Container = styled.div`
 function ManageAccount(props) {
   const [showAccountsModal, setShowAccountsModal] = useState(false);
 
-  handleSocialAccountSelect = (account) => {
+  const handleSocialAccountSelect = (account) => {
     const { api } = account;
   };
 
