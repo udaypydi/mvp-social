@@ -9,5 +9,11 @@ module.exports = {
         contentBase: paths.output,
         port: 9000,
         hot: true,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:4000',
+                pathRewrite: {'^/api' : ''}
+            }
+        }
     }
 };
