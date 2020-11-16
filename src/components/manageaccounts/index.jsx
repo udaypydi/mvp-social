@@ -22,6 +22,11 @@ function ManageAccount(props) {
 
   const handleSocialAccountSelect = (account) => {
     const { api } = account;
+    fetch(`/api${api}`)
+      .then(res => res.json())
+      .then(json => {
+        console.log(json);
+      });
   };
 
   function renderModalBody() {
@@ -34,7 +39,10 @@ function ManageAccount(props) {
         >
         {
           ACCOUNTS_LIST.map(account => (
-            <account.icon fontSize="100px" onClick={() => handleSocialAccountSelect(account)} />
+            <a href={account.api}>
+              <account.icon fontSize="100px" />
+            </a>
+            
           ))
         }
       </Container>

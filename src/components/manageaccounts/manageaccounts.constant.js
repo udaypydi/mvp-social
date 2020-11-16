@@ -20,7 +20,7 @@ export const ACCOUNTS_LIST = [
                     transform: scale(1.1);
                 }
               `,
-        api: '/auth-facebook',
+        api: '/api/login/facebook',
     },
     {
         name: 'Twitter',
