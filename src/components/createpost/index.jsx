@@ -5,6 +5,8 @@ import { Paragraph } from 'src/commons/text';
 import { FaPlus } from 'react-icons/fa';
 import { BasicCard } from 'src/commons/card';
 
+// styled div container
+
 const Container = styled.div`
     display: flex;
     flex: 1;
