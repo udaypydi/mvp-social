@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import Loader from 'uielements/loader/loader.component';
 import App from 'src/routes';
 
+// Index Page
+
 const Index = () => (
     <Suspense fallback={<Loader />}>
         <App />
