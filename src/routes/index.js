@@ -29,6 +29,7 @@ const ComponentDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: ${props => props.fullHeight ? '0px' : '50px'};
   background-color: ${colors.containerBackground}
 `;
 
@@ -54,7 +55,7 @@ const DefaultLayout = ({ component: Component, common, ...rest }) => (
             <Sidebar />
           )
         }
-        <ComponentDiv fullWidth={!common.sidebar}>
+        <ComponentDiv fullWidth={!common.sidebar} fullHeight={!common.header}>
           <Component {...matchProps} />
         </ComponentDiv>
       </RouterDiv>
@@ -67,9 +68,9 @@ function RoutesManager() {
   return (
     <Router>
       <Switch>
-        <DefaultLayout path="/create-post" common={{ header: false, sidebar: true }} component={CreatePost} />
+        <DefaultLayout path="/create-post" common={{ header: true, sidebar: true }} component={CreatePost} />
         <DefaultLayout path="/post-editor" common={{ header: false, sidebar: false }} component={PostEditor} />
-        <DefaultLayout path="/manage-accounts" common={{ header: false, sidebar: true }} component={ManageAccount} />
+        <DefaultLayout path="/manage-accounts" common={{ header: true, sidebar: true }} component={ManageAccount} />
         <DefaultLayout path="/dashboard" common={{ header: false, sidebar: true }} component={App} />
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />
       </Switch>

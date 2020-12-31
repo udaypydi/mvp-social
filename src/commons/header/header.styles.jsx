@@ -24,9 +24,10 @@ const styles = {
   headerElementsContainer: css`
     display: flex;
     flex: 1;
+    flexx-direction: row;
     justify-content: flex-end;
     align-items: center;
-    padding-right: 5%;
+    padding-right: 2%;
   `,
 
   headerElement: css`

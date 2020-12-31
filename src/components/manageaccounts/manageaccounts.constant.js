@@ -31,7 +31,7 @@ export const ACCOUNTS_LIST = [
                     transform: scale(1.1);
                 }
             `,
-        api: '/auth-twitter',
+        api: '/api/login/twitter',
     },
     {
         name: 'LinkedIn',
