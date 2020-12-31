@@ -48,11 +48,11 @@ function Header(props) {
           props.isLoggedIn && (
             <div css={styles.headerElementsContainer} className="flx-space-btwn">
               <MutedText className="ml-10">{props.headerText.toUpperCase()}</MutedText>
-              <div className="flex-row">
+              <div className="flex justify-end">
                 {
                   HEADER_ICONS.map((header) => (
-                    <div className="mr-50">
-                      <header.icon color="#555555" fontSize="22px" />
+                    <div className="mr-5">
+                      <header.icon color="#555555" fontSize="25px" />
                     </div>
                   ))
                 }

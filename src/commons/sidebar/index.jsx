@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 /** @jsx jsx */
@@ -9,7 +9,18 @@ import sideBarStyles from './sidebar.styles';
 import { SIDEBAR_ELEMENTS } from './sidebar.constants';
 
 function SideBar(props) {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState(null);
+
+  useEffect(() => {
+    const { pathname } = props.history.location;
+    if (pathname.indexOf('manage-accounts') !== -1) {
+      setActiveIndex(3);
+    } else if(pathname.indexOf('dashboard') !== -1) {
+      setActiveIndex(0);
+    } else {
+      setActiveIndex(0);
+    }
+  }, []);
 
   function setElementActive(index) {
     setActiveIndex(index);

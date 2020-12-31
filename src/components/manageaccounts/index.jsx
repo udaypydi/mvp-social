@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import theme from 'src/theme';
 import { Paragraph } from 'src/commons/text';
-import { FaPlus } from 'react-icons/fa';
+import { FaPlus, FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa';
 import { BasicCard } from 'src/commons/card';
 import Modal from 'src/commons/modal';
 import { ACCOUNTS_LIST } from './manageaccounts.constant';
+
+const { colors } = theme;
 
 const Container = styled.div`
     display: flex;
@@ -16,9 +19,32 @@ const Container = styled.div`
     height: ${(props) => props.height || 'auto'}
 `;
 
+const IconContainer = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+`;
+
+const Image = styled.img`
+  height: 50;
+  width: 50px;
+  border-radius: 50%;
+`;
 
 function ManageAccount(props) {
   const [showAccountsModal, setShowAccountsModal] = useState(false);
+  const [accounts, setAccounts] = useState([]);
+
+  useEffect(() => {
+    fetch('/api/get-accounts')
+      .then(res => res.json())
+      .then(json => {
+        setAccounts(json);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }, []);
 
   const handleSocialAccountSelect = (account) => {
     const { api } = account;
@@ -49,6 +75,29 @@ function ManageAccount(props) {
     );
   }
 
+  function getIconType(type) {
+    return (
+      <IconContainer>
+        {
+          type === 'facebook' && (
+            <FaFacebookSquare 
+              color={colors.facebookColor}
+              fontSize="25px"
+            />
+          )
+        }
+        {
+          type === 'twitter' && (
+            <FaTwitterSquare 
+              color={colors.twitterColor}
+              fontSize="25px"
+            />
+          )
+        }
+      </IconContainer>
+    );
+  }
+
   return (
     <React.Fragment>
         <Container
@@ -57,6 +106,32 @@ function ManageAccount(props) {
           height="100%"
           flexDirection="row"
         >
+          {
+            accounts.map(account => (
+              <div
+                className="text-center"
+              >
+                <BasicCard
+                  width="150px"
+                  height="150px"
+                  flexDirection="column"
+                  background="#ffffff"
+                  margin="10px"
+                >
+                  <Image src={account.profilePhoto} />
+                  <Paragraph
+                    weight={600}
+                    fontSize="1rem"
+                  >
+                    {account.name}
+                  </Paragraph>
+                  {getIconType(account.accountType)}
+                  
+                </BasicCard>
+                
+              </div> 
+            ))
+          }
           <div
             className="text-center"
             id="custom_card"
@@ -65,6 +140,8 @@ function ManageAccount(props) {
             <BasicCard
               width="150px"
               height="150px"
+              margin="10px"
+              flexDirection="column"
             >
               <FaPlus
                 size="3em"
@@ -72,13 +149,14 @@ function ManageAccount(props) {
                   fontWeight: 100,
                 }}
               />
+              <Paragraph
+                weight={600}
+                fontSize="1rem"
+              >
+                Add Account
+              </Paragraph>
             </BasicCard>
-            <Paragraph
-              weight={600}
-              fontSize="1rem"
-            >
-              Add Account
-            </Paragraph>
+           
           </div>
         </Container>
         <Modal
