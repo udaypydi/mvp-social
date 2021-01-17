@@ -42,6 +42,6 @@ export const ACCOUNTS_LIST = [
                     transform: scale(1.1);
                 }
             `,
-        api: '/auth-linkedin',
+        api: '/api/login/linkedin',
     },
 ]
