@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
 import theme from 'src/theme';
 import { Paragraph } from 'src/commons/text';
-import { FaPlus, FaFacebookSquare, FaTwitterSquare } from 'react-icons/fa';
+import { FaPlus, FaFacebookSquare, FaTwitterSquare, FaLinkedin } from 'react-icons/fa';
 import { BasicCard } from 'src/commons/card';
 import Modal from 'src/commons/modal';
 import { ACCOUNTS_LIST } from './manageaccounts.constant';
@@ -90,6 +90,14 @@ function ManageAccount(props) {
           type === 'twitter' && (
             <FaTwitterSquare 
               color={colors.twitterColor}
+              fontSize="25px"
+            />
+          )
+        }
+        {
+          type === 'linkedin' && (
+            <FaLinkedin 
+              color={colors.linkedinColorCode}
               fontSize="25px"
             />
           )
