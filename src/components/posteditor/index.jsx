@@ -1,41 +1,90 @@
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from '@emotion/styled';
-import 'grapesjs/dist/css/grapes.min.css';
-import grapesjs from 'grapesjs';
+import theme from 'src/theme';
+import Button from 'src/uielements/button/button.component';
+// import 'grapesjs/dist/css/grapes.min.css';
+import 'tui-image-editor/dist/tui-image-editor.css'
+import ImageEditor from '@toast-ui/react-image-editor'
+// import grapesjs from 'grapesjs';
 import './index.scss';
 
+const { colors } = theme;
 
 const Container = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    flex-direction: column;
 `;
 
+
+const CustomButton = styled(Button)`
+    background: ${colors.primaryColor} !important;
+    color: #ffffff;
+    &:hover {
+        box-shadow: 0 4px 20px 0 rgba(0,0,0,.14), 0 7px 10px -5px rgba(65,126,235,.4);
+    }
+
+    &:focus {
+        outline: none;
+    }
+`;
 
 
 function PostEditor(props) {
   
+  const [postURL, setPostURL] = useState('');
+
   let editor;
+  const myTheme = {};
+  const editorRef = React.createRef();
 
   useEffect(() => {
-    editor = grapesjs.init({
-      container: '#gjs',
-      fromElement: true,
-      height: '80%',
-      width: '80%',
-      storageManager: false,
-      panels: { defaults: [] },
-    });
+    const editorRootElement = editorRef.current.rootEl.current;
+    editorRootElement.getElementsByClassName('tui-image-editor-header-logo')[0].style.display = 'none';
+    const actionButton = editorRootElement.querySelector('.tui-image-editor-download-btn');
+    actionButton.onClick = (event) => {
+      event.preventDefault();
+      window.alert('hello');
+    }
   }, []);
 
   return (
-    <Container>
-      <div id="gjs">
-        <p>Demo Editor</p>
-      </div>
+    <Container>     
+      <ImageEditor
+        ref={editorRef}
+        includeUI={{
+          loadImage: {
+            path: 'img/sampleImage.jpg',
+            name: 'SampleImage'
+          },
+          theme: myTheme,
+          menu: ['shape', 'filter', 'crop'],
+          initMenu: 'filter',
+          uiSize: {
+            width: '1000px',
+            height: '700px'
+          },
+          menuBarPosition: 'bottom'
+        }}
+        cssMaxHeight={500}
+        cssMaxWidth={700}
+        selectionStyle={{
+          cornerSize: 20,
+          rotatingPointOffset: 70
+        }}
+        usageStatistics={false}
+      />
+       {/* <CustomButton 
+        onClick={() => {
+          const imageURL = editorRef.current.getInstance().toDataURL();
+          setPostURL(imageURL);
+        }}
+        buttonText="Share"
+      />
+      <img src={postURL} height="100" width="100" /> */}
     </Container>
   );
 }
