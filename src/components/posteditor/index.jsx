@@ -38,17 +38,27 @@ function PostEditor(props) {
   const [postURL, setPostURL] = useState('');
 
   let editor;
-  const myTheme = {};
+  const myTheme = {
+  'downloadButton.backgroundColor': `${colors.primaryColor}`,
+  'downloadButton.border': `1px solid ${colors.primaryColor}`,
+  'downloadButton.color': '#fff',
+  'downloadButton.fontFamily': 'NotoSans, sans-serif',
+  'downloadButton.fontSize': '12px',
+  'downloadButton.content': 'Share'
+  };
   const editorRef = React.createRef();
 
   useEffect(() => {
     const editorRootElement = editorRef.current.rootEl.current;
     editorRootElement.getElementsByClassName('tui-image-editor-header-logo')[0].style.display = 'none';
     const actionButton = editorRootElement.querySelector('.tui-image-editor-download-btn');
+    actionButton.value = 'Share';
+    actionButton.innerText = 'Share';
+
     actionButton.onClick = (event) => {
       event.preventDefault();
       window.alert('hello');
-    }
+    };
   }, []);
 
   return (
@@ -62,10 +72,10 @@ function PostEditor(props) {
           },
           theme: myTheme,
           menu: ['shape', 'filter', 'crop'],
-          initMenu: 'filter',
+          initMenu: 'crop',
           uiSize: {
             width: '1000px',
-            height: '700px'
+            height: '600px'
           },
           menuBarPosition: 'bottom'
         }}
