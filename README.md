@@ -27,7 +27,7 @@ Get analytics of each and every social network.
 
 # Editor
 
-- Basic template editing.
+- Basic Image editing.
 
 - Provide Simple Template to Start with (A blank template).
 
@@ -40,8 +40,6 @@ Get analytics of each and every social network.
 - Use grapejs for editor as a POC.
 
 - Add social network integrations plugins.
-
-- Allow grapejs to stretch full screen on load and show sidebar.
 
 - Integrate social accounts.
 
