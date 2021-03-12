@@ -22,7 +22,10 @@ function AddElements(props) {
 
   return (
     <Container>
-      <Container direction="column">
+      <Container 
+        direction="column"
+        onClick={() => addElement('CONTAINER')}
+      >
         <MdCropSquare size="3rem" style={{ fontWeight: 'normal' }} />
         <p>Container</p>
       </Container>

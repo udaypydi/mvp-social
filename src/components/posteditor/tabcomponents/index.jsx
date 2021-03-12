@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 /** @jsx jsx */
 import { jsx, css, keyframes } from '@emotion/core';
 import { MdKeyboardArrowLeft } from 'react-icons/md';
@@ -56,11 +57,19 @@ const LeftArrow = styled(MdKeyboardArrowLeft)`
     cursor: pointer;
 `;
 
-function TabComponents({ selectedTab, onCloseSidebar }) {
+function TabComponents({ selectedTab, canvasRef }) {
+
+  const [showItemsBar, setShowItemsBar] = useState(false); 
+
+  useEffect(() => {
+    setShowItemsBar(true);
+    return () => {};
+  }, [selectedTab]);
+
   function renderTabContent() {
     switch (selectedTab) {
       case 'BACKGROUND':
-        return <BackgrounTab />;
+        return <BackgrounTab  canvasRef={canvasRef} />;
 
       case 'ELEMENTS':
         return <AddElements />;
@@ -70,16 +79,32 @@ function TabComponents({ selectedTab, onCloseSidebar }) {
   }
 
   return (
-    <SidebarContainer>
-      <TitleContainer>
-        <LeftArrow size="2em" onClick={onCloseSidebar} />
-        <Title>{TAB_HEADER[selectedTab]}</Title>
-      </TitleContainer>
-      <TabContent>
-        {renderTabContent()}
-      </TabContent>
-    </SidebarContainer>
+    <>
+      {
+        showItemsBar ? (
+          <SidebarContainer>
+            <TitleContainer>
+              <LeftArrow size="2em" onClick={() => setShowItemsBar(false)} />
+              <Title>{TAB_HEADER[selectedTab]}</Title>
+            </TitleContainer>
+            <TabContent>
+              {renderTabContent()}
+            </TabContent>
+          </SidebarContainer>
+        ) : null
+      }
+    </>
   );
 }
+
+TabComponents.propTypes = {
+  selectedTab: PropTypes.string,
+  onCloseSidebar: PropTypes.func,
+};
+
+TabComponents.defaultProps = {
+  selectedTab: 'ELEMENTS',
+  onCloseSidebar: () => null,
+};
 
 export default TabComponents;

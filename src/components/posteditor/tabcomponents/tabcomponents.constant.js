@@ -3,4 +3,6 @@ export const TAB_HEADER = {
   BACKGROUND: 'Background',
   TEXT: 'Text',
   ELEMENTS: 'Add Elements',
+  CONTAINER: 'Container',
+  IMAGE: 'Image',
 };

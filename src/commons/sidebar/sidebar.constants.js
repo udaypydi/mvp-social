@@ -27,9 +27,4 @@ export const SIDEBAR_ELEMENTS = [
     route: '/manage-accounts',
     icon: styled(MdEventNote)`color: ${(props) => props.color}`,
   },
-  {
-    title: 'My Profile',
-    route: '/dashboard',
-    icon: styled(MdPerson)`color: ${(props) => props.color}`,
-  },
 ];

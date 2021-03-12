@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 /** @jsx jsx */
 import { jsx, css, keyframes } from '@emotion/core';
@@ -17,15 +17,21 @@ const Container = styled.div`
 `;
 
 
-function BackgroundTab(props) {
+function BackgroundTab({ canvasRef }) {
   const [background, setBackground] = useState('#ffffff');
+
+  function setCanvasBackgroundColor({ hex }) {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    ctx.fillStyle = hex;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    setBackground(hex);
+  }
 
   return (
     <Container>
       <ColorPicker
-        onChangeComplete={(color) => {
-          setBackground(color.hex);
-        }}
+        onChangeComplete={setCanvasBackgroundColor}
       />
     </Container>
   );
