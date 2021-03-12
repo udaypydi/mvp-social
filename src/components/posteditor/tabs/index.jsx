@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import styled from '@emotion/styled';
+import PropTypes from 'prop-types';
 import { Paragraph } from 'src/commons/text';
 import theme from 'src/theme';
 import { TABS } from './tabs.constant';
@@ -38,7 +39,7 @@ const Container = styled.div`
 `;
 
 function Tabs({ onTabChange }) {
-  const [selectedTab, setSelectedTab] = useState('');
+  const [selectedTab, setSelectedTab] = useState('TEMPLATES');
 
   return (
     <SidebarContainer border={selectedTab ? '1px solid #EEEEEE' : 'none'}>
@@ -60,5 +61,13 @@ function Tabs({ onTabChange }) {
     </SidebarContainer>
   );
 }
+
+Tabs.propTypes = {
+  onTabChange: PropTypes.func,
+};
+
+Tabs.defaultProps = {
+  onTabChange: () => null,
+};
 
 export default Tabs;
