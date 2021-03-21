@@ -22,7 +22,7 @@ const Container = styled.div`
 
 function PostEditor(props) {
 
-  const [activeSideTab, setActiveSideTab] = useState('TEMPLATES');
+  const [activeSideTab, setActiveSideTab] = useState('ELEMENTS');
   const canvasRef = useRef(null);
 
   return (

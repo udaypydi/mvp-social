@@ -72,7 +72,8 @@ function TabComponents({ selectedTab, canvasRef }) {
         return <BackgrounTab  canvasRef={canvasRef} />;
 
       case 'ELEMENTS':
-        return <AddElements />;
+        return <AddElements canvasRef={canvasRef} />;
+      
       default:
         return null;
     }

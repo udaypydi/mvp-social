@@ -2,20 +2,22 @@ import React, { useState, useContext } from 'react';
 import styled from '@emotion/styled';
 /** @jsx jsx */
 import { jsx, css, keyframes } from '@emotion/core';
-import { CirclePicker as ColorPicker } from 'react-color';
+import { CirclePicker as ColorPicker, SketchPicker } from 'react-color';
 import { EditableInput } from 'react-color/lib/components/common';
-
+import { H3 } from 'src/commons/text';
 import theme from 'src/theme';
+
+const { colors } = theme;
 
 
 const Container = styled.div`
     display: flex;
-    flex-direction: row;
+    flex-direction: ${props => props.flexDirection || 'row'};
     flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
+    align-items: ${props => props.alignItems || 'center'};
+    justify-content: ${props => props.justifyContent || 'center'};
     margin: auto;
-    margin-top: 20px;
+    margin-top: ${props => props.marginTop || '20px'};
 `;
 
 const ColorInput = styled(EditableInput)`
@@ -25,31 +27,42 @@ const ColorInput = styled(EditableInput)`
 `;
 
 function BackgroundTab({ canvasRef }) {
-  const [background, setBackground] = useState('#ffffff');
+  const [background, setBackground] = useState({ hex: '#fffff' });
 
-  function setCanvasBackgroundColor({ hex }) {
+  function setCanvasBackgroundColor(color) {
+    const { hex } = color;
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     ctx.fillStyle = hex;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
-    setBackground(hex);
+    setBackground(color);
   }
 
   return (
-    <Container>
-      <ColorPicker
-        onChangeComplete={setCanvasBackgroundColor}
-        circleSize={30}
-      >
-        <ColorInput 
-          style={{
-            border: '1px solid #ccc'
-          }}
-          onChange={setCanvasBackgroundColor}
-          value={background}
+    <Container
+      flexDirection="column"
+    >
+      <H3 color={colors.primaryColor}>Default Colors</H3>
+      <Container marginTop="30px">
+        <ColorPicker
+          onChangeComplete={setCanvasBackgroundColor}
+          circleSize={30}
         />
-      </ColorPicker>
-      
+      </Container>   
+      <Container
+        flexDirection="column"
+      >
+        <H3 color={colors.primaryColor}>Customize Colors</H3>
+        <Container marginTop="30px">
+          <SketchPicker 
+            style={{
+              border: '1px solid #ccc'
+            }}
+            onChange={setCanvasBackgroundColor}
+            color={background}
+          />
+        </Container>  
+      </Container>
     </Container>
   );
 }
