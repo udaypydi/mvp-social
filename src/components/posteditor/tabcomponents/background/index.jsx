@@ -3,6 +3,8 @@ import styled from '@emotion/styled';
 /** @jsx jsx */
 import { jsx, css, keyframes } from '@emotion/core';
 import { CirclePicker as ColorPicker } from 'react-color';
+import { EditableInput } from 'react-color/lib/components/common';
+
 import theme from 'src/theme';
 
 
@@ -16,6 +18,11 @@ const Container = styled.div`
     margin-top: 20px;
 `;
 
+const ColorInput = styled(EditableInput)`
+  border: 1px solid #ccc !important;
+  padding: 5px;
+  border-radius: 5px;
+`;
 
 function BackgroundTab({ canvasRef }) {
   const [background, setBackground] = useState('#ffffff');
@@ -32,7 +39,17 @@ function BackgroundTab({ canvasRef }) {
     <Container>
       <ColorPicker
         onChangeComplete={setCanvasBackgroundColor}
-      />
+        circleSize={30}
+      >
+        <ColorInput 
+          style={{
+            border: '1px solid #ccc'
+          }}
+          onChange={setCanvasBackgroundColor}
+          value={background}
+        />
+      </ColorPicker>
+      
     </Container>
   );
 }
