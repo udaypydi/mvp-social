@@ -6,6 +6,7 @@ import Button from 'src/uielements/button/button.component';
 import EditorPreview from './editorpreview';
 import TabComponents from './tabcomponents';
 import Tabs from './tabs';
+import VREditor from './vreditor';
 
 import './index.scss';
 
@@ -27,12 +28,13 @@ function PostEditor(props) {
 
   return (
     <Container>   
-        <Tabs onTabChange={setActiveSideTab} />
+        {/* <Tabs onTabChange={setActiveSideTab} />
         <TabComponents 
           selectedTab={activeSideTab} 
           canvasRef={canvasRef} 
         />  
-        <EditorPreview canvasRef={canvasRef} />
+        <EditorPreview canvasRef={canvasRef} /> */}
+        <VREditor />
     </Container>
   );
 }

@@ -30,7 +30,7 @@ export const H3 = styled.h3`
 export const H4 = styled.h4`
     font-size: 1.125rem;
     font-family: ${fonts.primaryFont};
-    font-weight: 300;
+    font-weight: ${props => props.fontWeight || 300};
     color: ${(props) => props.color};
     margin: ${(props) => props.margin || 0};
 `;
