@@ -24,17 +24,27 @@ const Container = styled.div`
 function PostEditor(props) {
 
   const [activeSideTab, setActiveSideTab] = useState('ELEMENTS');
+  const [activeEditor, setActiveEditor] = useState('VR');
   const canvasRef = useRef(null);
 
   return (
     <Container>   
-        {/* <Tabs onTabChange={setActiveSideTab} />
+    {activeEditor === 'CANVAS' && (
+      <>
+        <Tabs onTabChange={setActiveSideTab} />
         <TabComponents 
           selectedTab={activeSideTab} 
           canvasRef={canvasRef} 
         />  
-        <EditorPreview canvasRef={canvasRef} /> */}
+        <EditorPreview canvasRef={canvasRef} />
+      </>
+    )}
+    {
+      activeEditor === 'VR' && (
         <VREditor />
+      )
+    }
+
     </Container>
   );
 }
