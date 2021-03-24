@@ -69,7 +69,7 @@ function RoutesManager() {
     <Router>
       <Switch>
         <DefaultLayout path="/create-post" common={{ header: true, sidebar: true }} component={CreatePost} />
-        <DefaultLayout path="/post-editor" common={{ header: true, sidebar: true }} component={PostEditor} />
+        <DefaultLayout path="/post-editor" common={{ header: false, sidebar: false }} component={PostEditor} />
         <DefaultLayout path="/manage-accounts" common={{ header: true, sidebar: true }} component={ManageAccount} />
         <DefaultLayout path="/dashboard" common={{ header: false, sidebar: true }} component={App} />
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />

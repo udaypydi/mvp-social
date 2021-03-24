@@ -7,7 +7,6 @@ import EditorPreview from './editorpreview';
 import TabComponents from './tabcomponents';
 import Tabs from './tabs';
 import VREditor from './vreditor';
-import WebEditor from './vveditor';
 
 import './index.scss';
 
@@ -25,11 +24,11 @@ const Container = styled.div`
 function PostEditor(props) {
 
   const [activeSideTab, setActiveSideTab] = useState('ELEMENTS');
-  const [activeEditor, setActiveEditor] = useState('WEB');
+  const [activeEditor, setActiveEditor] = useState('VR');
   const canvasRef = useRef(null);
 
   return (
-    <>   
+    <Container>   
     {activeEditor === 'CANVAS' && (
       <>
         <Tabs onTabChange={setActiveSideTab} />
@@ -41,17 +40,12 @@ function PostEditor(props) {
       </>
     )}
     {
-      activeEditor === 'WEB' && (
-        <WebEditor />
-      )
-    }
-    {
       activeEditor === 'VR' && (
         <VREditor />
       )
     }
 
-    </>
+    </Container>
   );
 }
 
