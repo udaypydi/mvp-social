@@ -4,6 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { Paragraph } from 'src/commons/text';
 import { FaPlus } from 'react-icons/fa';
 import { BasicCard } from 'src/commons/card';
+import { POST_TYPES } from './createPost.constants';
 
 // styled div container
 
@@ -28,7 +29,7 @@ function CreatePost(props) {
       flexDirection="row"
     >
       <div
-        className="text-center"
+        className="text-center m-10"
         id="custom_card"
       >
         <BasicCard
@@ -52,6 +53,31 @@ function CreatePost(props) {
           Custom Post
         </Paragraph>
       </div>
+      {
+        POST_TYPES.map(postType => (
+          <div
+            className="text-center m-10"
+            id="custom_card"
+          >
+            <BasicCard
+              width="150px"
+              height="150px"
+              onClick={() => {
+                history.push(`/post-editor?editor=${postType.subRoute}`);
+              }}
+            >
+              <img src={postType.image} height="130px" width="130px" />
+            </BasicCard>
+            <Paragraph
+              weight={600}
+              fontSize="1rem"
+            >
+              {postType.name}
+            </Paragraph>
+          </div>
+        ))
+      }
+      
     </Container>
   );
 }
