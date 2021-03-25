@@ -22,11 +22,28 @@ const Container = styled.div`
 `;
 
 
+function getParameters( name, url ) {
+    if (!url) url = location.href;
+    name = name.replace(/[\[]/,"\\\[").replace(/[\]]/,"\\\]");
+    const regexS = "[\\?&]"+name+"=([^&#]*)";
+    const regex = new RegExp( regexS );
+    const results = regex.exec( url );
+    return results == null ? null : results[1];
+}
+
+
 function PostEditor(props) {
 
   const [activeSideTab, setActiveSideTab] = useState('ELEMENTS');
   const [activeEditor, setActiveEditor] = useState('WEB');
   const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const editorType = getParameters('editor', window.location.href);
+    if (editorType === 'vr') {
+      setActiveEditor('VR');
+    }
+  }, [])
 
   return (
     <>   
