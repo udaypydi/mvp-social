@@ -8,6 +8,8 @@ import TabComponents from './tabcomponents';
 import Tabs from './tabs';
 import VREditor from './vreditor';
 import WebEditor from './vveditor';
+import CustomEditor from './customeditor/';
+
 
 import './index.scss';
 
@@ -35,7 +37,7 @@ function getParameters( name, url ) {
 function PostEditor(props) {
 
   const [activeSideTab, setActiveSideTab] = useState('ELEMENTS');
-  const [activeEditor, setActiveEditor] = useState('WEB');
+  const [activeEditor, setActiveEditor] = useState('CANVAS');
   const canvasRef = useRef(null);
 
   useEffect(() => {
@@ -49,12 +51,13 @@ function PostEditor(props) {
     <>   
     {activeEditor === 'CANVAS' && (
       <>
-        <Tabs onTabChange={setActiveSideTab} />
+        {/* <Tabs onTabChange={setActiveSideTab} />
         <TabComponents 
           selectedTab={activeSideTab} 
           canvasRef={canvasRef} 
         />  
-        <EditorPreview canvasRef={canvasRef} />
+        <EditorPreview canvasRef={canvasRef} /> */}
+        <CustomEditor />
       </>
     )}
     {

@@ -31,7 +31,7 @@ module.exports = function({ plugins }) {
                     use: ['style-loader', 'css-loader', 'postcss-loader'],
                 },
                 {
-                    test: /\.(png|jpe?g|gif|eot|woff|ttf|svg)$/i,
+                    test: /\.(png|jpe?g|gif|eot|woff|woff2|ttf|svg)$/i,
                     use: [
                       {
                         loader: 'file-loader',
@@ -59,6 +59,7 @@ module.exports = function({ plugins }) {
                 assets: paths.assets,
                 src: paths.src,
                 components: paths.components,
+                'react/jsx-runtime': 'react/jsx-runtime'
             }
         },
     });
