@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
 import { EditorFrame, Iframe } from '../components.styles';
 import { SAMPLE_TEMPLATE } from '../constants';
-import { addElement } from './utils';
+import { addElement, initEmitter } from './utils';
 
-function Frame({ draggedElement }) {
+function Frame({ draggedElement, emitter }) {
     const [htmlDoc, setHtmlDoc] = useState(SAMPLE_TEMPLATE);
 
     const [{ canDrop, isOver }, drop] = useDrop(() => ({
@@ -15,6 +15,12 @@ function Frame({ draggedElement }) {
             isActive: monitor.canDrop() && monitor.isOver(),
         }),
     }));
+
+    useEffect(() => {
+        if (emitter) {
+            initEmitter(emitter);
+        }
+    }, []);
 
     useEffect(() => {
         if (draggedElement) {

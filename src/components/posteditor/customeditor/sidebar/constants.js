@@ -20,3 +20,24 @@ export const ELEMENTS = [
         key: 'COLUMNS2'
     }
 ];
+
+
+export const ELEMENTS_MAPPING = {
+    IMG: {
+        name: 'Image',
+        icon: 'image',
+        key: 'IMAGE',
+    },
+
+    DIV: {
+        name: 'Container',
+        icon: 'expand',
+        key: 'CONTAINER',
+    },
+    
+    P: {
+        name: 'Text',
+        icon: 'font',
+        key: 'TEXT',
+    },
+};
