@@ -19,7 +19,7 @@ function Frame({ draggedElement }) {
     useEffect(() => {
         if (draggedElement) {
             const newHTML = addElement(htmlDoc, draggedElement);
-            setHtmlDoc(newHTML);
+            // setHtmlDoc(newHTML);
         }
     }, [draggedElement]);
 
@@ -28,6 +28,7 @@ function Frame({ draggedElement }) {
         <EditorFrame raised>
             <div ref={drop}>
                 <Iframe 
+                    id="editor-frame"
                     frameBorder="0"
                     srcDoc={htmlDoc}
                 />

@@ -10,4 +10,5 @@ export default {
   facebookColor: '#3b5998',
   twitterColor: '#00acee',
   linkedinColorCode: '#0e76a8',
+  basicFont: 'rgba(0, 0, 0, 1)'
 };

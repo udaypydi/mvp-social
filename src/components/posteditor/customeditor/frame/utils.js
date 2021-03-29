@@ -1,32 +1,118 @@
 import { nanoid } from 'nanoid';
 import { TEXT_HTML, CONTAINER_HTML, IMAGE_HTML } from '../componentHTML';
+import interact from 'interactjs';
 
-function parseHTML(doc) {
-    const parser = new DOMParser();
-    const htmlDoc = parser.parseFromString(doc, 'text/html');
-    const editorBody = htmlDoc.getElementById('editor-body');
-    return { htmlDoc, editorBody };
+
+function addInteraction(container, element, classId) {
+    let x = 0;
+    let y = 0;
+
+    interact(`#editor-frame`, { context: container })
+        .dropzone({
+            accept: `.${classId}`,
+            overlap: 0.01,
+        });
+
+    interact(element,  { context: container } )
+        .draggable({
+            inertia: true,
+            modifiers: [
+                interact.modifiers.snap({
+                    targets: [
+                    interact.snappers.grid({ x: 10, y: 10 })
+                    ],
+                    range: Infinity,
+                    relativePoints: [ { x: 0, y: 0 } ]
+                }),
+                interact.modifiers.restrict({
+                    restriction: element.parentNode,
+                    elementRect: { top: 0, left: 0, bottom: 1, right: 1 },
+                    endOnly: true
+                })
+            ],
+            autoScroll: false,
+        })
+        .on('dragmove', function(event) {
+                x += event.dx
+                y += event.dy
+                event.target.style.webkitTransform =
+                event.target.style.transform =
+                    'translate(' + x + 'px, ' + y + 'px)';
+        });
+
+    interact(element, { context: container })
+        .resizable({
+            edges: { left: true, right: true, bottom: true, top: true },
+            listeners: {
+                move (event) {
+                    let target = event.target
+                    let x = (parseFloat(target.getAttribute('data-x')) || x)
+                    let y = (parseFloat(target.getAttribute('data-y')) || y)
+                    target.style.width = event.rect.width + 'px'
+                    target.style.height = event.rect.height + 'px'
+                    x += event.deltaRect.left
+                    y += event.deltaRect.top
+
+                    target.style.webkitTransform = target.style.transform =
+                    'translate(' + x + 'px,' + y + 'px)'
+
+                    target.setAttribute('data-x', x)
+                    target.setAttribute('data-y', y)
+                }
+            },
+            modifiers: [
+                interact.modifiers.restrictEdges({
+                    outer: 'parent'
+                }),
+                interact.modifiers.restrictSize({
+                    min: { width: 100, height: 50 }
+                })
+            ],
+
+            inertia: true
+        });
+    
+    interact(`.${classId}`).pointerEvents({
+        holdDuration: 1000,
+        ignoreFrom: '[no-pointer]',
+        origin: 'self',
+    })
+
+    interact(`.${classId}`).on('tap', function (event) {
+        console.log(event.type, event.target)
+    })
 }
 
 function addImage(doc) {
-    const { htmlDoc, editorBody } = parseHTML(doc);
-    const image = document.createElement('img');
+    const iframeDoc = document.getElementById('editor-frame').contentWindow.document;
+    const editorBody = iframeDoc.body;
+
+    const image = iframeDoc.createElement('img');
     image.id = nanoid();
     image.src = 'https://lh3.googleusercontent.com/proxy/dZCIhaprlqEjieHqSZpYUxwl8QtqPd611n1SQXnIPZp4nSVoS48lUKXt8ouJSQvrWufRJhdwLkbtNQKHxye_EVsRM6WEl2lHLTHeWiKwGdRqmV3Lh-xcy_xTS2IHG4Ezk16oNMVMFrNdrgY';
     image.height = 200;
     image.width = 200;
+    const classId = nanoid();
+    image.classList.add(classId);
     editorBody.append(image);
-    return htmlDoc.getElementsByTagName('html')[0].innerHTML;
+    addInteraction(iframeDoc, image, classId);
 }
 
 
 function addText(doc) {
-    const { htmlDoc, editorBody } = parseHTML(doc);
-    const p = document.createElement('p');
+    const iframeDoc = document.getElementById('editor-frame').contentWindow.document;
+    const editorBody = iframeDoc.body;
+
+    const p = iframeDoc.createElement('p');
     p.id = nanoid();
     p.innerText = 'Enter your text here';
+    p.style.margin = '0px';
+    p.style.width = 'fit-content';
+    p.style.padding = '10px';
+    const classId = nanoid();
+    p.classList.add(classId);
     editorBody.append(p);
-    return htmlDoc.getElementsByTagName('html')[0].innerHTML;
+    addInteraction(iframeDoc, p, classId);
 }
 
 function addTwoColumnContainer(doc) {
