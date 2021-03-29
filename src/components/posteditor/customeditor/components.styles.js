@@ -15,7 +15,7 @@ export const EditorFrame = styled(Segment)`
     top: 50%;
     left: 50%;
     transform:translate(-50%, -50%);
-    z-index: 9999;
+    z-index: 10;
     padding: 0px !important;
 `;
 

@@ -40,6 +40,7 @@
     "grapesjs": "^0.16.18",
     "grapesjs-preset-webpage": "^0.1.11",
     "grapesjs-react": "^3.1.1",
+    "interactjs": "^1.10.8",
     "nanoid": "^3.1.22",
     "postcss-cli": "^7.1.0",
     "prop-types": "^15.7.2",

@@ -10,7 +10,7 @@ export const ELEMENTS = [
         key: 'CONTAINER',
     },
     {
-        name: 'TEXT',
+        name: 'Text',
         icon: 'font',
         key: 'TEXT',
     },

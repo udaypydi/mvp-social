@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import { ElementContainer, ElementIcon } from './styles';
 import { H4 } from 'src/commons/text';
 
-function Element({ element, handleDragEnd }) {
+function Element({ element, handleDragEnd, addElement }) {
 
     const [{ isDragging }, drag] = useDrag(() => ({
         type: 'ELEMENT',
@@ -19,7 +19,7 @@ function Element({ element, handleDragEnd }) {
     }))
 
     return (
-        <div ref={drag} key={nanoid()}>
+        <div ref={drag} key={nanoid()} onClick={() => handleDragEnd(element)}>
             <ElementContainer>
                 <ElementIcon 
                     name={element.icon}

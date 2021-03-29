@@ -5,6 +5,8 @@ export const SAMPLE_TEMPLATE=`
                 body {
                     margin: 0;
                     padding: 0;
+                    height: 100vh;
+                    width: 100vw;
                 }
             </style>
         </head>
