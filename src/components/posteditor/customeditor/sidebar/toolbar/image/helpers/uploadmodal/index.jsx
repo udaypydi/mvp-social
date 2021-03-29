@@ -1,10 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { H4, H3, CustomIcon } from 'src/commons/text';
 import { Modal, Divider, Input } from 'semantic-ui-react';
 import { CustomModal, ContentDiv, CustomButton } from './styles';
 import { ImageUploadContainer } from '../../styles';
 
-function ImageUploadModal({ onModalClose }) {
+function ImageUploadModal({ onModalClose, targetElement }) {
+
+    const [imageURL, setImageURL] = useState('');
+
+    function changeImage() {
+        targetElement.src = imageURL;
+        onModalClose();
+    } 
+
     return (
         <div>
             <CustomModal style={{ zIndex: 99999 }} open>
@@ -39,10 +47,13 @@ function ImageUploadModal({ onModalClose }) {
                         >
                             <ContentDiv>
                                 <Input 
-                                    placeholder="Enter URL"  
+                                    placeholder="Enter URL" 
+                                    onChange={event => {
+                                        setImageURL(event.target.value);
+                                    }} 
                                     style={{ width: '80%', marginRight: 10, marginLeft: 10 }} 
                                 />
-                                <CustomButton>Add Image</CustomButton>
+                                <CustomButton onClick={changeImage}>Add Image</CustomButton>
                             </ContentDiv>     
                         </ContentDiv>    
                     </ContentDiv>

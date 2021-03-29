@@ -1,7 +1,10 @@
 import { nanoid } from 'nanoid';
 import { TEXT_HTML, CONTAINER_HTML, IMAGE_HTML } from '../componentHTML';
 import interact from 'interactjs';
+import theme from 'src/theme';
 
+const { colors } = theme;
+let eventEmitter = null;
 
 function addInteraction(container, element, classId) {
     let x = 0;
@@ -9,7 +12,7 @@ function addInteraction(container, element, classId) {
 
     interact(`#editor-frame`, { context: container })
         .dropzone({
-            accept: `.${classId}`,
+            accept: `#${element.id}`,
             overlap: 0.01,
         });
 
@@ -40,11 +43,22 @@ function addInteraction(container, element, classId) {
                     'translate(' + x + 'px, ' + y + 'px)';
         });
 
+    interact(element)
+        .on('click', function (event) {
+            eventEmitter.emit('elementClicked', { element });
+            event.stopImmediatePropagation();
+        }, true);
+
+
+
     interact(element, { context: container })
         .resizable({
             edges: { left: true, right: true, bottom: true, top: true },
             listeners: {
                 move (event) {
+                    if (!element.classList.contains('editor-active-element')) {
+                        element.classList.add('editor-active-element');
+                    }
                     let target = event.target
                     let x = (parseFloat(target.getAttribute('data-x')) || x)
                     let y = (parseFloat(target.getAttribute('data-y')) || y)
@@ -52,6 +66,7 @@ function addInteraction(container, element, classId) {
                     target.style.height = event.rect.height + 'px'
                     x += event.deltaRect.left
                     y += event.deltaRect.top
+
 
                     target.style.webkitTransform = target.style.transform =
                     'translate(' + x + 'px,' + y + 'px)'
@@ -65,22 +80,17 @@ function addInteraction(container, element, classId) {
                     outer: 'parent'
                 }),
                 interact.modifiers.restrictSize({
-                    min: { width: 100, height: 50 }
+                    min: { width: 20, height: 20 }
                 })
             ],
 
             inertia: true
         });
-    
-    interact(`.${classId}`).pointerEvents({
-        holdDuration: 1000,
-        ignoreFrom: '[no-pointer]',
-        origin: 'self',
-    })
 
-    interact(`.${classId}`).on('tap', function (event) {
-        console.log(event.type, event.target)
-    })
+
+    interact(`#${element.id}`).on('click', (event) => {
+        console.log(event);
+    });
 }
 
 function addImage(doc) {
@@ -94,6 +104,7 @@ function addImage(doc) {
     image.width = 200;
     const classId = nanoid();
     image.classList.add(classId);
+    eventEmitter.emit('elementClicked', { element: image });
     editorBody.append(image);
     addInteraction(iframeDoc, image, classId);
 }
@@ -108,9 +119,11 @@ function addText(doc) {
     p.innerText = 'Enter your text here';
     p.style.margin = '0px';
     p.style.width = 'fit-content';
+    p.style.fontSize = '20px';
     p.style.padding = '10px';
     const classId = nanoid();
     p.classList.add(classId);
+    eventEmitter.emit('elementClicked', { element: p });
     editorBody.append(p);
     addInteraction(iframeDoc, p, classId);
 }
@@ -143,6 +156,11 @@ function addTwoColumnContainer(doc) {
 }
 
 
+export function initEmitter(emitter) {
+    eventEmitter = emitter;
+    addEditorEvents();
+}
+
 export function addElement(target, element) {
     switch (element.key) {
         case 'IMAGE':
@@ -157,4 +175,21 @@ export function addElement(target, element) {
         default:
             break;
     }
+}
+
+function getElementFromIframe(selector) {
+    const iframeDoc = document.getElementById('editor-frame').contentWindow.document;
+    return iframeDoc.getElementById(selector);
+}   
+function addEditorEvents() {
+    eventEmitter.on('borderRadiusChange', (event) => {
+        const { elementId, borderType } = event;
+
+        const element = getElementFromIframe(elementId);
+        if (borderType === 'rounded') {
+            element.style.borderRadius = '50%';
+        } else if (borderType === 'none') {
+            element.style.borderRadius = '0px';
+        } 
+    });
 }
