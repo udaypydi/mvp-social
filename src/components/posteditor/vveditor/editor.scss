@@ -1,6 +1,8 @@
 
 #gjs {
     border: none !important;
+    height: 600px;
+    width: 80vw;
   }
 
   .gjs-one-bg {
@@ -22,6 +24,12 @@
     color: #417EEB;
   }
 
+  .gjs-cv-canvas {
+    top: 0;
+    width: 85% !important;
+    height: 95% !important;
+    margin-top: 3% !important;
+}
 // 
 
 .editor-row {
