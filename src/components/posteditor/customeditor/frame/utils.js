@@ -183,13 +183,27 @@ function getElementFromIframe(selector) {
 }   
 function addEditorEvents() {
     eventEmitter.on('borderRadiusChange', (event) => {
-        const { elementId, borderType } = event;
+        const { elementId, borderType, borderRadius } = event;
 
         const element = getElementFromIframe(elementId);
         if (borderType === 'rounded') {
             element.style.borderRadius = '50%';
         } else if (borderType === 'none') {
             element.style.borderRadius = '0px';
-        } 
+        }  else {
+            element.style.borderRadius = `${borderRadius}%`;
+        }
+    });
+
+    eventEmitter.on('boxShadowChange', (event) => {
+        const { elementId, boxShadow: {
+            x,
+            y,
+            blur,
+            spread,
+            hex,
+        } } = event;
+        const element = getElementFromIframe(elementId);
+        element.style.boxShadow = `${x}px ${y}px ${blur}px ${spread}px ${hex}`;
     });
 }
