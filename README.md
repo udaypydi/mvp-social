@@ -33,10 +33,6 @@ Get analytics of each and every social network.
 
 - Add canvas and render templates on the canvas.
 
-- Manage editor state through recoil.
-
-- Use grapejs for editor as a POC.
-
 - Add social network integrations plugins.
 
 - Integrate social accounts.
