@@ -6,6 +6,7 @@ import theme from 'src/theme';
 import ImageUploadModal from '../helpers/uploadmodal';
 import ImageBorder from '../helpers/imageBorder';
 import ImageDimensions from '../helpers/dimensions';
+import Arrange from '../helpers/arrange';
 
 const { colors } = theme;
 
@@ -26,6 +27,8 @@ function ImageToolbar({ activeElement }) {
             <ImageBorder targetElement={activeElement} />
             <Divider section></Divider>
             <ImageDimensions targetElement={activeElement} />
+            <Divider section></Divider>
+            <Arrange targetElement={activeElement} />
             {
                 showImageUploadModal && (
                     <ImageUploadModal 

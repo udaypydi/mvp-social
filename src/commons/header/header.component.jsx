@@ -10,7 +10,7 @@ import styles from './header.styles';
 function Header(props) {
   const [headerColor, setHeaderColor] = useState(props.headerColor);
 
-  const { changeHeaderColorOnScroll } = props;
+  const { changeHeaderColorOnScroll, zIndex, raised } = props;
 
   const scrollEventHandler = (event) => {
     if (window.scrollY > 50 && window.scrollY < window.screen.availHeight) {
@@ -32,7 +32,7 @@ function Header(props) {
   });
 
   return (
-    <div css={styles.headerContainer} style={{ backgroundColor: headerColor }}>
+    <div css={[styles.headerContainer, raised ? styles.raisedContainer : '']} style={{ backgroundColor: headerColor, zIndex: zIndex }}>
       <p css={styles.companyName}>castmypost</p>
       {props.showHeaderElements && !props.isLoggedIn && (
         <div css={styles.headerElementsContainer}>

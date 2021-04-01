@@ -1,4 +1,7 @@
 import { css } from '@emotion/core';
+import theme from 'src/theme';
+
+const { colors } = theme;
 
 const styles = {
   headerContainer: css`
@@ -8,7 +11,7 @@ const styles = {
     width: 100%;
     position: fixed;
     top: 0;
-    background-color: transparent;
+    background-color: #ffffff;
     padding: 0px 10px 0px 10px;
     justify-content: flex-start;
     align-items: center;
@@ -17,8 +20,9 @@ const styles = {
     font-family: sans-serif;
     font-size: 2em;
     font-weight: 900;
-    color: #ffffff;
+    color: ${colors.primaryColor};
     letter-spacing: 0.063em;
+    margin-left: 20px;
   `,
 
   headerElementsContainer: css`
@@ -44,6 +48,12 @@ const styles = {
       border-bottom: 5px solid #00C2D4;
     }
     transition: border-bottom .2s ease;
+  `,
+
+  raisedContainer: css`
+    -webkit-box-shadow: 0px 3px 5px -2px #ccc;
+    -moz-box-shadow: 0px 3px 5px -2px #ccc;
+    box-shadow: 0px 3px 5px -2px #ccc;
   `,
 };
 
