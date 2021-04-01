@@ -5,7 +5,8 @@ import { SketchPicker } from 'react-color';
 import { H4, H6 } from 'src/commons/text';
 import Container from 'src/commons/container';
 import { IMAGE_BORDER_RADIUS_STYLES } from './imageBorder.constant';
-import { EmitterContext } from '../../../../../index';
+import { EmitterContext } from '../../../../index';
+
 
 function ImageBorder({ targetElement }) {
     const [showManualInput, setShowManualInput] = useState(false);
@@ -74,24 +75,26 @@ function ImageBorder({ targetElement }) {
     return (
         <Container direction="column" alignItems="flex-start" justifyContent="flex-start">
             <H4>Image Border</H4>
-            <Container justifyContent="flex-start" alignItems="center" margin="10px 0px 0px 10px">
-                <H6 margin="0px 10px 0px 0px" >Border Radius Style</H6>
-                <Select 
-                    placeholder="Select Border Radius"
-                    options={IMAGE_BORDER_RADIUS_STYLES} 
-                    onChange={handleBorderStyleChange}
-                />
+            <Container justifyContent="flex-start" alignItems="center" margin="10px 0px 0px 0px">
+                <label className="mr-2">Radius Type</label>
+                <div style={{ width: 100 }}>
+                    <Select 
+                        placeholder="Select Border Radius"
+                        options={IMAGE_BORDER_RADIUS_STYLES} 
+                        onChange={handleBorderStyleChange}
+                    />
+                </div>    
             </Container>
             {
                 showManualInput && (
-                    <Container justifyContent="flex-start" alignItems="center" margin="10px 0px 0px 10px">
-                        <H6 margin="0px 10px 0px 0px" >Border Radius </H6>
+                    <Container justifyContent="flex-start" alignItems="center" margin="10px 0px 0px 0px">
+                        <label className="mr-2">Radius </label>
                         <>
                             <Input 
                                 type="number"
                                 value={borderRadius}
                                 onChange={handleBorderRadiusChange}
-                                style={{ width: '30%', marginLeft: '25px' }}
+                                style={{ width: '30%', marginLeft: '35px' }}
                             /><label className="ml-2">%</label>
                         </>    
                     </Container>  
@@ -101,11 +104,11 @@ function ImageBorder({ targetElement }) {
             <Container 
                 justifyContent="flex-start" 
                 alignItems="flex-start" 
-                margin="10px 0px 0px 10px"
+                margin="10px 0px 0px 0px"
                 style={{ width: '100%' }}
             >
-                <H6 margin="0px 10px 0px 0px" >Box Shadow </H6>
-                <Segment style={{ display: 'flex', flexWrap: 'wrap', width: '70%', marginLeft: '28px' }}>
+                <label className="mr-2">Box Shadow </label>
+                <Segment style={{ display: 'flex', flexWrap: 'wrap', width: '74%', margin: 0}}>
                     <div 
                         style={{ display: 'flex', width: '50%', alignItems: 'center' }}
                         className="mt-2"
