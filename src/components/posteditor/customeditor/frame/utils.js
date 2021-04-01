@@ -49,8 +49,6 @@ function addInteraction(container, element, classId) {
             event.stopImmediatePropagation();
         }, true);
 
-
-
     interact(element, { context: container })
         .resizable({
             edges: { left: true, right: true, bottom: true, top: true },
@@ -73,6 +71,10 @@ function addInteraction(container, element, classId) {
 
                     target.setAttribute('data-x', x)
                     target.setAttribute('data-y', y)
+                },
+
+                end(event) {
+                    eventEmitter.emit('elementResized', { element: event.target });
                 }
             },
             modifiers: [
@@ -86,11 +88,6 @@ function addInteraction(container, element, classId) {
 
             inertia: true
         });
-
-
-    interact(`#${element.id}`).on('click', (event) => {
-        console.log(event);
-    });
 }
 
 function addImage(doc) {
@@ -121,6 +118,7 @@ function addText(doc) {
     p.style.width = 'fit-content';
     p.style.fontSize = '20px';
     p.style.padding = '10px';
+    p.style.wordBreak = 'break-all';
     const classId = nanoid();
     p.classList.add(classId);
     eventEmitter.emit('elementClicked', { element: p });
@@ -205,5 +203,28 @@ function addEditorEvents() {
         } } = event;
         const element = getElementFromIframe(elementId);
         element.style.boxShadow = `${x}px ${y}px ${blur}px ${spread}px ${hex}`;
+    });
+
+    eventEmitter.on('dimensionsChange', (event) => {
+        const { elementId, dimensions: {
+            width,
+            height,
+        }} = event;
+
+        const element = getElementFromIframe(elementId);
+        element.style.width = `${width}px`;
+        element.style.height = `${height}px`;
+    });
+
+    eventEmitter.on('fontSizeChange', (event) => {
+        const { elementId, fontSize } = event;
+        const element = getElementFromIframe(elementId);
+        element.style.fontSize = `${fontSize}px`;
+    });
+    
+    eventEmitter.on('fontColorChange', (event) => {
+        const { elementId, color } = event;
+        const element = getElementFromIframe(elementId);
+        element.style.color = color;
     });
 }

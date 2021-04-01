@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { H4, H3, CustomIcon } from 'src/commons/text';
 import { Modal, Divider, Input } from 'semantic-ui-react';
 import { CustomModal, ContentDiv, CustomButton } from './styles';
-import { ImageUploadContainer } from '../../styles';
+import { ImageUploadContainer } from '../../image/styles';
 
 function ImageUploadModal({ onModalClose, targetElement }) {
 

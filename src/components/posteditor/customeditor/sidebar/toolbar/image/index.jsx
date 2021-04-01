@@ -3,8 +3,9 @@ import { Icon, Divider } from 'semantic-ui-react';
 import { PropertyContainer, ImageUploadContainer } from './styles';
 import { H4, CustomIcon } from 'src/commons/text';
 import theme from 'src/theme';
-import ImageUploadModal from './helpers/uploadmodal';
-import ImageBorder from './helpers/imageBorder';
+import ImageUploadModal from '../helpers/uploadmodal';
+import ImageBorder from '../helpers/imageBorder';
+import ImageDimensions from '../helpers/dimensions';
 
 const { colors } = theme;
 
@@ -24,6 +25,7 @@ function ImageToolbar({ activeElement }) {
             <Divider section></Divider>
             <ImageBorder targetElement={activeElement} />
             <Divider section></Divider>
+            <ImageDimensions targetElement={activeElement} />
             {
                 showImageUploadModal && (
                     <ImageUploadModal 

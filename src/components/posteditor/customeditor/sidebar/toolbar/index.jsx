@@ -2,6 +2,7 @@ import React from 'react';
 import { ToolbarHeader, CustomIcon, Title } from './styles';
 
 import ImageToolbar from './image';
+import TextToolbar from './text';
 
 function Toolbar({ targetElement, onBack, activeElement }) {
 
@@ -14,7 +15,12 @@ function Toolbar({ targetElement, onBack, activeElement }) {
                         activeElement={activeElement}
                     />
                 );
-        
+            
+            case 'TEXT':
+                return (
+                    <TextToolbar targetElement={activeElement} />
+                );
+
             default:
                 break;
         }
