@@ -19,7 +19,8 @@ export const EditorElementsContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    justify-content: space-evenly;
+    justify-content: flex-start;
+    padding-left: 15px;
 `;
 
 export const ElementContainer = styled(Segment)`

@@ -15,10 +15,12 @@ function EditorComponents({ handleDragEnd }) {
     const emitter = useContext(EmitterContext);
     
     emitter.on('elementClicked', (event) => {
-        targetElement?.classList.remove('editor-active-element');
         setTargetElement(event.element);
         setSelectedElement(ELEMENTS_MAPPING[event.element.tagName]);
-        event.element.classList.add('editor-active-element');
+    });
+
+    emitter.on('elementDeleted', (event) => {
+        setSelectedElement(null);
     });
 
     function updateSelectedElement(element) {

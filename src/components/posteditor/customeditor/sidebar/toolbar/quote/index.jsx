@@ -1,19 +1,20 @@
 import React from 'react';
 import { Divider } from 'semantic-ui-react';
-import TextDimension from '../helpers/dimensions';
+import QuotationDimension from '../helpers/dimensions';
 import FontStyle from '../helpers/fontstyle';
 import TextEdit from '../helpers/textedit';
 
-function TextToolbar({ targetElement }) {
+function QuotationToolbar({ targetElement }) {
     return (
         <div>
-            <TextDimension targetElement={targetElement} />
+            <QuotationDimension targetElement={targetElement} />
             <Divider />
             <FontStyle targetElement={targetElement} />
             <Divider />
             <TextEdit targetElement={targetElement} />
+            <Divider />
         </div>
-    )
+    );
 }
 
-export default TextToolbar;
+export default QuotationToolbar;

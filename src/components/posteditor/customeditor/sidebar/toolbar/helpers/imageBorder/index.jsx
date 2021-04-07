@@ -8,7 +8,7 @@ import { IMAGE_BORDER_RADIUS_STYLES } from './imageBorder.constant';
 import { EmitterContext } from '../../../../index';
 
 
-function ImageBorder({ targetElement }) {
+function ImageBorder({ targetElement, title }) {
     const [showManualInput, setShowManualInput] = useState(false);
     const [borderRadius, setBorderRadius] = useState(0);
     const [boxShadow, setBoxShadow] = useState({
@@ -74,7 +74,7 @@ function ImageBorder({ targetElement }) {
 
     return (
         <Container direction="column" alignItems="flex-start" justifyContent="flex-start">
-            <H4>Image Border</H4>
+            <H4>{ title || 'Image Border'}</H4>
             <Container justifyContent="flex-start" alignItems="center" margin="10px 0px 0px 0px">
                 <label className="mr-2">Radius Type</label>
                 <div style={{ width: 100 }}>
