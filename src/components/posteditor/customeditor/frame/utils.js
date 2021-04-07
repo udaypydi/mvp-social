@@ -301,4 +301,15 @@ function addEditorEvents() {
         const element = getElementFromIframe(elementId);
         element.innerText = text;
     });
+
+    eventEmitter.on('borderStyleChange', (event) => {
+        const { elementId,  borderStyle: {
+            width,
+            color,
+            style
+        }} = event;
+        const element = getElementFromIframe(elementId);
+        element.style.border = `${width}px ${style} ${color}`; 
+    });
+
 }

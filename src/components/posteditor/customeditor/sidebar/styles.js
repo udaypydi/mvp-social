@@ -12,6 +12,7 @@ export const EditorSidebar = styled(Segment)`
     left: 0;
     top: 0;
     padding: 0px !important;
+    overflow: auto;
 `;
 
 export const EditorElementsContainer = styled.div`
