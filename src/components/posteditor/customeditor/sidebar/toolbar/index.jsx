@@ -3,10 +3,14 @@ import { ToolbarHeader, CustomIcon, Title } from './styles';
 
 import ImageToolbar from './image';
 import TextToolbar from './text';
+import ButtonToolbar from './button';
+import QuotationToolbar from './quote';
+import ContainerToolbar from './container';
 
 function Toolbar({ targetElement, onBack, activeElement }) {
 
     function renderToolbars() {
+        console.log(targetElement);
         switch (targetElement.key) {
             case 'IMAGE':
                 return (
@@ -19,6 +23,17 @@ function Toolbar({ targetElement, onBack, activeElement }) {
             case 'TEXT':
                 return (
                     <TextToolbar targetElement={activeElement} />
+                );
+
+            case 'BUTTON':
+                return (
+                    <ButtonToolbar targetElement={activeElement} />
+                );
+
+            
+            case 'CONTAINER':
+                return (
+                    <ContainerToolbar targetElement={activeElement} />
                 );
 
             default:

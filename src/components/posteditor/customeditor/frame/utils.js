@@ -54,9 +54,9 @@ function addInteraction(container, element, classId) {
             edges: { left: true, right: true, bottom: true, top: true },
             listeners: {
                 move (event) {
-                    if (!element.classList.contains('editor-active-element')) {
-                        element.classList.add('editor-active-element');
-                    }
+                    // if (!element.classList.contains('editor-active-element')) {
+                    //     element.classList.add('editor-active-element');
+                    // }
                     let target = event.target
                     let x = (parseFloat(target.getAttribute('data-x')) || x)
                     let y = (parseFloat(target.getAttribute('data-y')) || y)
@@ -88,6 +88,14 @@ function addInteraction(container, element, classId) {
 
             inertia: true
         });
+
+    element.addEventListener('keydown', function(event) {
+        const key = event.key;
+        if (key === "Backspace" || key === "Delete") {
+            element.parentNode.removeChild(element);
+            eventEmitter.emit('elementDeleted');
+        }
+    });
 }
 
 function addImage(doc) {
@@ -96,9 +104,10 @@ function addImage(doc) {
 
     const image = iframeDoc.createElement('img');
     image.id = nanoid();
-    image.src = 'https://lh3.googleusercontent.com/proxy/dZCIhaprlqEjieHqSZpYUxwl8QtqPd611n1SQXnIPZp4nSVoS48lUKXt8ouJSQvrWufRJhdwLkbtNQKHxye_EVsRM6WEl2lHLTHeWiKwGdRqmV3Lh-xcy_xTS2IHG4Ezk16oNMVMFrNdrgY';
+    image.src = 'https://t3.ftcdn.net/jpg/02/68/55/60/360_F_268556012_c1WBaKFN5rjRxR2eyV33znK4qnYeKZjm.jpg';
     image.height = 200;
     image.width = 200;
+    image.tabIndex = 1;
     const classId = nanoid();
     image.classList.add(classId);
     eventEmitter.emit('elementClicked', { element: image });
@@ -107,11 +116,11 @@ function addImage(doc) {
 }
 
 
-function addText(doc) {
+function addText(doc, type = 'p') {
     const iframeDoc = document.getElementById('editor-frame').contentWindow.document;
     const editorBody = iframeDoc.body;
 
-    const p = iframeDoc.createElement('p');
+    const p = iframeDoc.createElement(type);
     p.id = nanoid();
     p.innerText = 'Enter your text here';
     p.style.margin = '0px';
@@ -119,6 +128,7 @@ function addText(doc) {
     p.style.fontSize = '20px';
     p.style.padding = '10px';
     p.style.wordBreak = 'break-all';
+    p.tabIndex = 1;
     const classId = nanoid();
     p.classList.add(classId);
     eventEmitter.emit('elementClicked', { element: p });
@@ -153,6 +163,40 @@ function addTwoColumnContainer(doc) {
     return htmlDoc.getElementsByTagName('html')[0].innerHTML;
 }
 
+function addButton(doc) {
+    const iframeDoc = document.getElementById('editor-frame').contentWindow.document;
+    const editorBody = iframeDoc.body;
+
+    const button = iframeDoc.createElement('button');
+    button.id = nanoid();
+    button.innerText = 'Button';
+    button.style.height = '50px';
+    button.style.width = '150px';
+    button.style.color = colors.primaryColor;
+    button.tabIndex = 1;
+    const classId = nanoid();
+    eventEmitter.emit('elementClicked', { element: button });
+    editorBody.append(button);
+    addInteraction(iframeDoc, button, classId);
+}
+
+function addContainer(doc) {
+    const iframeDoc = document.getElementById('editor-frame').contentWindow.document;
+    const editorBody = iframeDoc.body;
+
+    const container = iframeDoc.createElement('div');
+    container.id = nanoid();
+    container.style.height = '150px';
+    container.style.width = '150px';
+    container.backgroundColor = 'transparent';
+    container.style.border = `1px dashed ${colors.primaryColor}`;
+    container.tabIndex = 1;
+    const classId = nanoid();
+    eventEmitter.emit('elementClicked', { element: container });
+    editorBody.append(container);
+    addInteraction(iframeDoc, container, classId);
+}
+
 
 export function initEmitter(emitter) {
     eventEmitter = emitter;
@@ -160,15 +204,25 @@ export function initEmitter(emitter) {
 }
 
 export function addElement(target, element) {
+
     switch (element.key) {
         case 'IMAGE':
             return addImage(target);
 
         case 'TEXT':
             return addText(target);
+        
+        case 'CONTAINER':
+            return addContainer(target);
 
         case 'COLUMNS2':
             return addTwoColumnContainer(target);
+        
+        case 'BUTTON':
+            return addButton(target);
+        
+        case 'QUOTE':
+            return addText(target, 'q');
 
         default:
             break;
@@ -194,13 +248,15 @@ function addEditorEvents() {
     });
 
     eventEmitter.on('boxShadowChange', (event) => {
-        const { elementId, boxShadow: {
-            x,
-            y,
-            blur,
-            spread,
-            hex,
-        } } = event;
+        const { 
+            elementId, 
+            boxShadow: {
+                x,
+                y,
+                blur,
+                spread,
+                hex,
+        }} = event;
         const element = getElementFromIframe(elementId);
         element.style.boxShadow = `${x}px ${y}px ${blur}px ${spread}px ${hex}`;
     });
@@ -226,5 +282,23 @@ function addEditorEvents() {
         const { elementId, color } = event;
         const element = getElementFromIframe(elementId);
         element.style.color = color;
+    });
+
+    eventEmitter.on('backgroundColorChange', (event) => {
+        const { elementId, color } = event;
+        const element = getElementFromIframe(elementId);
+        element.style.background = color;
+    });
+
+    eventEmitter.on('fontFamilyChange', (event) => {
+        const { elementId, fontFamily } = event;
+        const element = getElementFromIframe(elementId);
+        element.style.fontFamily = fontFamily;
+    });
+
+    eventEmitter.on('textChange', (event) => {
+        const { elementId, text } = event;
+        const element = getElementFromIframe(elementId);
+        element.innerText = text;
     });
 }
