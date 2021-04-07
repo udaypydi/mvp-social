@@ -5,3 +5,13 @@
     animation: rotation 10s infinite linear;
     -webkit-animation:rotation 10s infinite linear;
 }
+
+
+::-webkit-scrollbar {
+    width: 0;  /* Remove scrollbar space */
+    display: none; /* Optional: just make scrollbar invisible */
+  }
+  /* Optional: show position indicator in red */
+  ::-webkit-scrollbar-thumb {
+    display: none;
+  }

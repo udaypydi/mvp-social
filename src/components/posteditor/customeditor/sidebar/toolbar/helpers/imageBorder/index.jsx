@@ -4,13 +4,18 @@ import Slider from 'react-rangeslider';
 import { SketchPicker } from 'react-color';
 import { H4, H6 } from 'src/commons/text';
 import Container from 'src/commons/container';
-import { IMAGE_BORDER_RADIUS_STYLES } from './imageBorder.constant';
+import { IMAGE_BORDER_RADIUS_STYLES, IMAGE_BORDER_STYLES } from './imageBorder.constant';
 import { EmitterContext } from '../../../../index';
 
 
 function ImageBorder({ targetElement, title }) {
     const [showManualInput, setShowManualInput] = useState(false);
     const [borderRadius, setBorderRadius] = useState(0);
+    const [borderStyle, setBorderStyle] = useState({
+        width: 0,
+        color: '#000000',
+        style: 'none',
+    });
     const [boxShadow, setBoxShadow] = useState({
         x: 0,
         y: 0,
@@ -19,6 +24,7 @@ function ImageBorder({ targetElement, title }) {
         hex: '#000000',
     });
     const [showColorPicker, setShowColorPicker] = useState(false);
+    const [showBorderColorPicker, setShowBorderColorPicker] = useState(false);
 
     const emitter = useContext(EmitterContext);
 
@@ -51,7 +57,7 @@ function ImageBorder({ targetElement, title }) {
         }
     }
 
-    function handleBoxShdaowChange() {
+    function handleBoxShdaowChange(event) {
         const { value, name } = event.target;
         const regex = /^\d+$/;
 
@@ -71,6 +77,20 @@ function ImageBorder({ targetElement, title }) {
         emitter.emit('boxShadowChange', { elementId: targetElement.id, boxShadow: newBoxShadow });
     }
     
+    function setBorderColor(color) {
+        const { hex } = color;
+        const newBorderStyle = { ...borderStyle };
+        newBorderStyle.color = hex;
+        setBorderStyle(newBorderStyle);
+        emitter.emit('borderStyleChange', { elementId: targetElement.id, borderStyle: newBorderStyle });
+    }
+
+    function handleBorderStyleChange(value, key) {
+        const newBorderStyle = { ...borderStyle };
+        newBorderStyle[key] = value;
+        setBorderStyle(newBorderStyle);
+        emitter.emit('borderStyleChange', { elementId: targetElement.id, borderStyle: newBorderStyle });
+    }
 
     return (
         <Container direction="column" alignItems="flex-start" justifyContent="flex-start">
@@ -101,6 +121,69 @@ function ImageBorder({ targetElement, title }) {
                 )
             }
             
+            <Container 
+                justifyContent="flex-start" 
+                alignItems="flex-start" 
+                margin="10px 0px 0px 0px"
+                style={{ width: '100%' }}
+            >
+                <label className="mr-10">Border</label>
+                <Segment style={{ display: 'flex', flexWrap: 'wrap', width: '74%', margin: 0, marginLeft: 2 }}>
+                    <div className="flex items-center justify-between w-full mt-5">
+                        <label className="mr-2 text-xs">Color</label>
+                        <div 
+                            onClick={() => {
+                                setShowBorderColorPicker(!showBorderColorPicker);
+                            }}
+                            className="w-10 h-10 border border-grey-600" 
+                            style={{ backgroundColor: borderStyle?.color}}
+                        >
+                        </div>
+                    </div> 
+                    <div style={{ position: 'absolute', zIndex: 9999, marginTop: '60px' }}>
+                        {
+                            showBorderColorPicker && (
+                                <SketchPicker 
+                                    style={{ marginTop: 10 }}
+                                    onChange={setBorderColor}
+                                    color={borderStyle.color}
+                                />
+                            )
+                        }
+                    </div>    
+                    <div className="flex items-center justify-between w-full mt-5">
+                        <label className="mr-2 text-xs">Width (px)</label>
+                        <div className="flex items-center justify-end w-1/2">
+                            <Input 
+                                className="w-3/4"
+                                placeholder="px"
+                                onChange={e => {
+                                    handleBorderStyleChange(e.target.value, 'width');
+                                }}
+                            />
+                        </div>
+                    </div>
+                     <div 
+                        style={{ display: 'flex', width: '100%', alignItems: 'center', justifyContent: 'space-between' }}
+                        className="mt-2"
+                    >
+                        <label className="mr-2 text-xs">Style</label>
+                        <div style={{ width: 150 }}>
+                            <Select 
+                                placeholder="Radius"
+                                options={IMAGE_BORDER_STYLES}
+                                value={borderStyle?.style}
+                                style={{ minWidth: 0, width: 150 }}
+                                onChange={(event, data) => {
+                                    handleBorderStyleChange(data.value, 'style')
+                                }}
+                            />
+                        </div>    
+                    </div> 
+                    
+                </Segment>
+            </Container>    
+
             <Container 
                 justifyContent="flex-start" 
                 alignItems="flex-start" 
