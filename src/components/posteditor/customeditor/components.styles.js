@@ -3,7 +3,7 @@ import { Segment } from 'semantic-ui-react';
 
 export const EditorContainer = styled.div`
     position: relative;
-    height:  100vh;
+    height:  100%;
     width: 100vw !important;
     margin: 0px !important;
 `;

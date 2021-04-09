@@ -10,7 +10,6 @@ import ContainerToolbar from './container';
 function Toolbar({ targetElement, onBack, activeElement }) {
 
     function renderToolbars() {
-        console.log(targetElement);
         switch (targetElement.key) {
             case 'IMAGE':
                 return (

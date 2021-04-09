@@ -29,7 +29,7 @@ const ComponentDiv = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: ${props => props.fullHeight ? '0px' : '50px'};
+  padding-top: ${props => props.fullHeight ? '0px' : `${props.paddingTop}px`};
   background-color: ${colors.containerBackground}
 `;
 
@@ -43,8 +43,10 @@ const DefaultLayout = ({ component: Component, common, ...rest }) => (
             <Header
               changeHeaderColorOnScroll={false}
               headerColor={colors.primaryColor}
-              headerColor="transparent"
+              headerColor={common?.headerColor || "transparent"}
+              zIndex={common?.zIndex}
               headerText={common.headerText}
+              raised={common.raisedHeader}
               showHeaderElements
               isLoggedIn
             />
@@ -55,7 +57,7 @@ const DefaultLayout = ({ component: Component, common, ...rest }) => (
             <Sidebar />
           )
         }
-        <ComponentDiv fullWidth={!common.sidebar} fullHeight={!common.header}>
+        <ComponentDiv fullWidth={!common.sidebar} fullHeight={!common.header} paddingTop={common.paddingTop}>
           <Component {...matchProps} />
         </ComponentDiv>
       </RouterDiv>
@@ -69,7 +71,16 @@ function RoutesManager() {
     <Router>
       <Switch>
         <DefaultLayout path="/create-post" common={{ header: true, sidebar: true }} component={CreatePost} />
-        <DefaultLayout path="/post-editor" common={{ header: false, sidebar: false }} component={PostEditor} />
+        <DefaultLayout 
+          path="/post-editor" 
+          common={{ 
+            header: true, 
+            sidebar: false, 
+            headerColor: '#ffffff', 
+            zIndex: 99999,
+            paddingTop: 80,
+            raisedHeader: true,
+          }} component={PostEditor} />
         <DefaultLayout path="/manage-accounts" common={{ header: true, sidebar: true }} component={ManageAccount} />
         <DefaultLayout path="/dashboard" common={{ header: false, sidebar: true }} component={App} />
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />

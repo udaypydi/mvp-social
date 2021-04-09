@@ -67,7 +67,7 @@ function addInteraction(container, element, classId) {
 
 
                     target.style.webkitTransform = target.style.transform =
-                    'translate(' + x + 'px,' + y + 'px)'
+                    `translate(${x}px, ${y}px)`;
 
                     target.setAttribute('data-x', x)
                     target.setAttribute('data-y', y)
@@ -204,7 +204,6 @@ export function initEmitter(emitter) {
 }
 
 export function addElement(target, element) {
-
     switch (element.key) {
         case 'IMAGE':
             return addImage(target);
@@ -312,4 +311,14 @@ function addEditorEvents() {
         element.style.border = `${width}px ${style} ${color}`; 
     });
 
+    eventEmitter.on('elementArranged', (event) => {
+        const { elementId, eventType } = event;
+        const element = getElementFromIframe(elementId);
+
+        if (eventType === 'FORWARD') {
+            element.style.zIndex = 9999;
+        } else {
+            element.style.zIndex = -1;
+        }
+    })
 }

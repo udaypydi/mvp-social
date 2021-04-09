@@ -22,12 +22,6 @@ function Frame({ draggedElement, emitter }) {
         }
     }, []);
 
-    useEffect(() => {
-        if (draggedElement) {
-            const newHTML = addElement(htmlDoc, draggedElement);
-            // setHtmlDoc(newHTML);
-        }
-    }, [draggedElement]);
 
     
     return (
