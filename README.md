@@ -54,3 +54,5 @@ Get analytics of each and every social network.
   - Can be designed for a specific social profile (Facebook, Twitter, Linkedin).
   
   - Can create generic posts which allows the user to share it over multiple social accounts.
+
+- Drag drop editor
