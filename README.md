@@ -10,12 +10,6 @@ Get analytics of each and every social network.
 
 
 # TODO
-
-- Create a Post
-
-  - Can be designed for a specific social profile (Facebook, Twitter, Linkedin).
-  
-  - Can create generic posts which allows the user to share it over multiple social accounts.
   
 - Provide social network marketing.
 
@@ -52,3 +46,11 @@ Get analytics of each and every social network.
 - Scheduled reminders.
 
 - Use passport js or some other oauth mechanisms to authenticate social profiles
+
+## Done
+
+- Create a Post
+
+  - Can be designed for a specific social profile (Facebook, Twitter, Linkedin).
+  
+  - Can create generic posts which allows the user to share it over multiple social accounts.
