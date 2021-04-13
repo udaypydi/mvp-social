@@ -1,4 +1,4 @@
-# Social Network Management Dashboard
+# Castmypost
 
 Manage social networks in a single dashboard.
 
