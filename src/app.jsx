@@ -3,6 +3,9 @@ import 'assets/css/main.css';
 import Dashboard from 'components/dashboard';
 import './app.scss';
 
-export default function App() {
+function App() {
   return <Dashboard />;
 }
+
+export default App;
+

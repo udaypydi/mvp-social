@@ -12,4 +12,6 @@ const Index = () => (
     </Suspense>
 );
 
-ReactDOM.render(hot(<Index />), document.getElementById('root'));
+const HMRIndex = hot(Index);
+
+ReactDOM.render(<HMRIndex />, document.getElementById('root'));

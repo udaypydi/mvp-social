@@ -7,6 +7,7 @@ import Sidebar from 'src/commons/sidebar';
 import CreatePost from 'src/components/createpost';
 import PostEditor from 'src/components/posteditor';
 import ManageAccount from 'src/components/manageaccounts';
+import AggregateNetworks from 'src/components/aggregatenetworks';
 import App from 'src/app';
 
 const { colors } = theme;
@@ -83,6 +84,7 @@ function RoutesManager() {
           }} component={PostEditor} />
         <DefaultLayout path="/manage-accounts" common={{ header: true, sidebar: true }} component={ManageAccount} />
         <DefaultLayout path="/dashboard" common={{ header: false, sidebar: true }} component={App} />
+        <DefaultLayout path="/aggregate" common={{ header: false, sidebar: true }} component={AggregateNetworks} />
         <DefaultLayout path="/" common={{ header: false, sidebar: true }} component={App} />
       </Switch>
     </Router>

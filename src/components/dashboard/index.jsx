@@ -57,7 +57,7 @@ function Dashboard(props) {
         weight="400"
         margin="10px 0px 10px 0px"
       >
-        Create your social content with ease.
+        Create your social content with castmypost.
       </H3>
       <CustomButton
         onClick={() => {
