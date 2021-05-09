@@ -17,7 +17,6 @@ module.exports = {
                 analyzerMode: 'static',
                 defaultSizes: 'gzip'
             }),
-            new webpack.ProgressPlugin(handler),
         ]
     }),
 };
