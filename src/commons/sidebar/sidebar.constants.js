@@ -13,7 +13,7 @@ export const SIDEBAR_ELEMENTS = [
     icon: styled(MdDashboard)`color: ${(props) => props.color}`,
   },
   {
-    title: 'Aggregate Networks',
+    title: `What's Trending?`,
     route: '/aggregate',
     icon: styled(MdTrendingUp)`color: ${(props) => props.color}`,
   },

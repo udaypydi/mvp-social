@@ -17,6 +17,8 @@ function SideBar(props) {
       setActiveIndex(3);
     } else if(pathname.indexOf('dashboard') !== -1) {
       setActiveIndex(0);
+    } else if(pathname.indexOf('aggregate') !== -1) {
+      setActiveIndex(1);
     } else {
       setActiveIndex(0);
     }
